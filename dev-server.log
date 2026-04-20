@@ -1,0 +1,1924 @@
+
+> smart-expense-tracker@1.0.0 dev
+> concurrently "npm run dev --prefix server" "npm run dev --prefix client"
+
+[0] 
+[0] > smart-expense-tracker-server@1.0.0 dev
+[0] > nodemon src/index.js
+[0] 
+[1] 
+[1] > smart-expense-tracker-client@1.0.0 dev
+[1] > vite --host 0.0.0.0
+[1] 
+[1] 
+[1]   [32m[1mVITE[22m v8.0.9[39m  [2mready in [0m[1m259[22m[2m[0m ms[22m
+[1] 
+[1]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[1]   [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.2.42:[1m5173[22m/[39m
+[0] [33m[nodemon] 3.1.14[39m
+[0] [33m[nodemon] to restart at any time, enter `rs`[39m
+[0] [33m[nodemon] watching path(s): *.*[39m
+[0] [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/health [32m200[0m 2.290 ms - 45[0m
+[0] [0mGET /api/suggestions [32m200[0m 9.328 ms - 100[0m
+[0] [0mGET /api/analytics [32m200[0m 12.629 ms - 99[0m
+[0] [0mGET /api/suggestions [36m304[0m 2.942 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 19.471 ms - 2[0m
+[0] [0mGET /api/transactions [32m200[0m 29.767 ms - 2[0m
+[0] [0mGET /api/analytics [36m304[0m 4.448 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 2.907 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 2.349 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 31.431 ms - 256[0m
+[0] [0mGET /api/transactions [32m200[0m 5.135 ms - 258[0m
+[0] [0mGET /api/goals [36m304[0m 3.086 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 18.868 ms - 186[0m
+[0] [0mGET /api/suggestions [32m200[0m 18.826 ms - 244[0m
+[0] [0mPOST /api/goals [32m201[0m 3.019 ms - 336[0m
+[0] [0mGET /api/goals [32m200[0m 2.185 ms - 338[0m
+[0] [0mGET /api/transactions [36m304[0m 2.926 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 2.768 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 3.371 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.101 ms - 247[0m
+[0] [0mGET /api/transactions [32m200[0m 4.028 ms - 506[0m
+[0] [0mGET /api/goals [36m304[0m 3.453 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 3.746 ms - 224[0m
+[0] [0mGET /api/suggestions [32m200[0m 3.950 ms - 317[0m
+[0] [0mGET /api/health [32m200[0m 0.152 ms - 45[0m
+[0] [0mGET /api/transactions [36m304[0m 6.401 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 6.532 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 6.234 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 6.191 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 4.877 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 4.587 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 4.979 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.083 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 3.093 ms - 506[0m
+[0] [0mGET /api/goals [32m200[0m 4.428 ms - 338[0m
+[0] [0mGET /api/analytics [32m200[0m 4.773 ms - 224[0m
+[0] [0mGET /api/suggestions [32m200[0m 4.987 ms - 317[0m
+[0] [0mGET /api/transactions [36m304[0m 6.601 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 7.467 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 4.585 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 4.039 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.305 ms - 251[0m
+[0] [0mGET /api/transactions [32m200[0m 2.137 ms - 758[0m
+[0] [0mGET /api/goals [36m304[0m 4.266 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 4.856 ms - 230[0m
+[0] [0mGET /api/suggestions [32m200[0m 4.634 ms - 234[0m
+[0] [0mPOST /api/transactions [32m201[0m 1.499 ms - 252[0m
+[0] [0mGET /api/transactions [32m200[0m 2.010 ms - 1011[0m
+[0] [0mGET /api/goals [36m304[0m 3.035 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 3.935 ms - 327[0m
+[0] [0mGET /api/suggestions [36m304[0m 4.080 ms - -[0m
+[0] [0mDELETE /api/transactions/69e648addc83b6322e2cb662 [32m204[0m 13.173 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 2.382 ms - 758[0m
+[0] [0mGET /api/goals [36m304[0m 2.455 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 3.966 ms - 230[0m
+[0] [0mGET /api/suggestions [36m304[0m 3.013 ms - -[0m
+[0] [0mDELETE /api/transactions/69e64868dc83b6322e2cb65c [32m204[0m 1.284 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 3.223 ms - 506[0m
+[0] [0mGET /api/goals [36m304[0m 3.408 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 4.222 ms - 224[0m
+[0] [0mGET /api/suggestions [32m200[0m 4.571 ms - 317[0m
+[0] [0mDELETE /api/transactions/69e647dadc83b6322e2cb646 [32m204[0m 1.677 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 2.429 ms - 258[0m
+[0] [0mGET /api/goals [36m304[0m 2.253 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 3.152 ms - 186[0m
+[0] [0mGET /api/suggestions [32m200[0m 3.536 ms - 244[0m
+[0] [0mDELETE /api/transactions/69e64742dc83b6322e2cb63a [32m204[0m 1.669 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 2.472 ms - 2[0m
+[0] [0mGET /api/goals [36m304[0m 2.305 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 2.135 ms - 99[0m
+[0] [0mGET /api/suggestions [32m200[0m 2.118 ms - 100[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[1] [2m11:45:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/GoalList.jsx, /src/components/TransactionList.jsx, /src/components/SummaryCards.jsx[22m
+[1] [2m11:45:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m11:45:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/health [32m200[0m 2.928 ms - 45[0m
+[0] [0mPOST /api/auth/register [32m201[0m 421.743 ms - 308[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.825 ms - 287[0m
+[0] [0mGET /api/transactions [32m200[0m 8.189 ms - 289[0m
+[0] [0mGET /api/transactions [33m401[0m 0.213 ms - 39[0m
+[0] [0mPOST /api/auth/login [33m401[0m 4.601 ms - 40[0m
+[0] [0mPOST /api/auth/register [32m201[0m 330.761 ms - 288[0m
+[0] [0mGET /api/transactions [36m304[0m 12.231 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 12.277 ms - 2[0m
+[0] [0mGET /api/analytics [36m304[0m 12.760 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.716 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 302.768 ms - 288[0m
+[0] [0mGET /api/transactions [36m304[0m 8.647 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.156 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 8.114 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 8.186 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 14.154 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.593 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.922 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 12.334 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.669 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.316 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.655 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.483 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 12.424 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.409 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.240 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.364 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 10.679 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.320 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.772 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 9.180 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m11:50:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionForm.jsx[22m
+[1] [2m11:50:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionList.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mPOST /api/auth/register [32m201[0m 355.630 ms - 316[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.011 ms - 320[0m
+[0] [0mGET /api/transactions [36m304[0m 14.770 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.900 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.242 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 21.468 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.635 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 9.341 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.229 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 3.861 ms - -[0m
+[1] [2m11:51:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionForm.jsx[22m
+[1] [2m11:52:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionForm.jsx[22m
+[1] [2m11:52:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m11:52:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionList.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 13.426 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.109 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.863 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.168 ms - -[0m
+[1] [2m11:52:14 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/register [32m201[0m 364.020 ms - 314[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.729 ms - 314[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[1] [2m11:54:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/GoalForm.jsx[22m
+[1] [2m11:55:01 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/GoalList.jsx[22m
+[1] [2m11:55:09 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/register [32m201[0m 362.635 ms - 306[0m
+[0] [0mPOST /api/goals [32m201[0m 12.385 ms - 420[0m
+[0] [0mPOST /api/auth/login [32m200[0m 287.087 ms - 288[0m
+[0] [0mGET /api/transactions [36m304[0m 13.323 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.613 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.061 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 14.889 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m11:59:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m11:59:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/SummaryCards.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[1] [2m11:59:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m11:59:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/transactions [36m304[0m 18.988 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.234 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 14.197 ms - 207[0m
+[0] [0mGET /api/suggestions [36m304[0m 17.103 ms - -[0m
+[0] [0mPOST /api/auth/register [32m201[0m 389.812 ms - 318[0m
+[0] [0mPOST /api/transactions [32m201[0m 6.730 ms - 309[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.030 ms - 304[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.270 ms - 301[0m
+[0] [0mGET /api/analytics [32m200[0m 23.232 ms - 407[0m
+[0] [0mGET /api/transactions [36m304[0m 10.050 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.260 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.450 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 9.857 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.388 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 9.643 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 8.387 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 7.866 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 10.559 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 9.576 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 8.682 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 8.115 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.817 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.993 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 8.481 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 8.024 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m12:01:49 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m12:01:49 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/SummaryCards.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[1] [2m12:01:49 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/transactions [36m304[0m 22.353 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 15.520 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 11.587 ms - 456[0m
+[0] [0mGET /api/suggestions [36m304[0m 12.998 ms - -[0m
+[0] [0mPOST /api/auth/register [32m201[0m 391.143 ms - 320[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.833 ms - 301[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.141 ms - 311[0m
+[0] [0mPOST /api/goals [32m201[0m 3.669 ms - 411[0m
+[0] [0mGET /api/analytics [32m200[0m 28.293 ms - 567[0m
+[0] [0mGET /api/transactions [36m304[0m 12.819 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.001 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.863 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 18.834 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 7.923 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.031 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 8.205 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 5.134 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m12:04:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m12:04:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/DashboardCharts.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/transactions [36m304[0m 21.007 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 17.329 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 10.852 ms - 538[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.686 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mPOST /api/auth/register [32m201[0m 392.609 ms - 314[0m
+[0] [0mPOST /api/transactions [32m201[0m 7.626 ms - 305[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.995 ms - 305[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.875 ms - 314[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.495 ms - 308[0m
+[0] [0mGET /api/analytics [32m200[0m 27.436 ms - 972[0m
+[0] [0mGET /api/transactions [36m304[0m 16.433 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.991 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 22.008 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 21.047 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 8.586 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.368 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 6.560 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.278 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m12:06:32 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Suggestions.jsx[22m
+[1] [2m12:06:32 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mPOST /api/auth/register [32m201[0m 388.678 ms - 319[0m
+[0] [0mPOST /api/transactions [32m201[0m 6.682 ms - 301[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.457 ms - 314[0m
+[0] [0mPOST /api/transactions [32m201[0m 5.253 ms - 329[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.230 ms - 328[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.579 ms - 303[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.913 ms - 303[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.859 ms - 303[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.833 ms - 303[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.234 ms - 303[0m
+[0] [0mPOST /api/goals [32m201[0m 4.124 ms - 416[0m
+[0] [0mGET /api/suggestions [32m200[0m 24.497 ms - 752[0m
+[0] [0mGET /api/transactions [36m304[0m 15.025 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.318 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 21.720 ms - -[0m
+[0] [0mGET /api/suggestions [32m200[0m 20.697 ms - 160[0m
+[0] [0mGET /api/transactions [36m304[0m 9.181 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.819 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 5.713 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.250 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 12.405 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.018 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.153 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 17.822 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 7.978 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 7.411 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 7.591 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 3.874 ms - -[0m
+[1] [2m12:10:03 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AuthForm.jsx[22m
+[1] [2m12:10:03 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m12:10:17 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/login [32m200[0m 302.388 ms - 288[0m
+[0] [0mGET /api/transactions [36m304[0m 11.248 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.310 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.835 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.080 ms - -[0m
+[0] [0mPOST /api/auth/register [32m201[0m 358.985 ms - 310[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.722 ms - 301[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.534 ms - 301[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.373 ms - 310[0m
+[0] [0mPOST /api/goals [32m201[0m 3.297 ms - 407[0m
+[0] [0mGET /api/analytics [32m200[0m 7.846 ms - 731[0m
+[0] [0mGET /api/transactions [36m304[0m 11.420 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.696 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.746 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 9.511 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 11.052 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.375 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.012 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.173 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[1] [2m12:15:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/GoalList.jsx, /src/components/TransactionList.jsx, /src/components/SummaryCards.jsx[22m
+[1] [2m12:15:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionForm.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 31.511 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 20.313 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 20.114 ms - 558[0m
+[0] [0mGET /api/suggestions [36m304[0m 19.687 ms - -[0m
+[1] [2m12:15:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionList.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 14.592 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.909 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 7.730 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 22.181 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 24.533 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 9.060 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 8.013 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 7.742 ms - -[0m
+[1] [2m12:15:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 13.201 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.314 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.448 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 20.015 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 8.735 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.187 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 8.267 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.657 ms - -[0m
+[0] [0mGET /api/budgets [32m200[0m 4.435 ms - 2[0m
+[0] [0mGET /api/budgets [36m304[0m 4.444 ms - -[0m
+[1] [2m12:16:20 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 11.557 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.464 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.578 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.484 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.357 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.793 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.526 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.622 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.554 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.823 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.015 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.790 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 5.816 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.327 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.312 ms - -[0m
+[1] [2m12:16:47 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:16:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:16:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:17:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:17:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:17:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m12:17:21 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/register [32m201[0m 310.160 ms - 314[0m
+[0] [0mPOST /api/budgets [32m201[0m 14.887 ms - 208[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.499 ms - 371[0m
+[0] [0mGET /api/analytics [32m200[0m 19.442 ms - 838[0m
+[0] [0mGET /api/suggestions [32m200[0m 3.500 ms - 565[0m
+[0] [0mGET /api/transactions [32m200[0m 2.731 ms - 373[0m
+[0] [0mGET /api/health [32m200[0m 0.308 ms - 45[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.171 ms - 357[0m
+[0] [0mGET /api/transactions [32m200[0m 6.746 ms - 359[0m
+[0] [0mGET /api/goals [36m304[0m 10.331 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 10.211 ms - 696[0m
+[0] [0mGET /api/suggestions [32m200[0m 8.973 ms - 452[0m
+[0] [0mGET /api/budgets [36m304[0m 3.174 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 387.775 ms - 288[0m
+[0] [0mGET /api/transactions [36m304[0m 10.010 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 9.857 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.143 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 10.492 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.862 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 10.885 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.558 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.085 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.407 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.704 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.394 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.751 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.634 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 6.092 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.257 ms - -[0m
+[1] [2m12:23:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/SummaryCards.jsx[22m
+[1] [2m12:23:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/DashboardCharts.jsx[22m
+[1] [2m12:23:52 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/GoalList.jsx[22m
+[1] [2m12:23:52 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 10.741 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.420 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.816 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.057 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.270 ms - -[0m
+[1] [2m12:24:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/SummaryCards.jsx[22m
+[1] [2m12:24:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mDELETE /api/transactions/69e6522737c11bf91c63fa8a [32m204[0m 6.619 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 5.955 ms - 2[0m
+[0] [0mGET /api/goals [36m304[0m 5.810 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 6.504 ms - 558[0m
+[0] [0mGET /api/suggestions [32m200[0m 6.442 ms - 160[0m
+[0] [0mGET /api/budgets [36m304[0m 1.945 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 8.982 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.158 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.263 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.634 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 8.935 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.899 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.206 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 9.008 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.420 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.738 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m12:27:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Suggestions.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mPOST /api/auth/register [32m201[0m 359.364 ms - 314[0m
+[0] [0mPOST /api/transactions [32m201[0m 5.984 ms - 348[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.867 ms - 361[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.561 ms - 363[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.479 ms - 366[0m
+[0] [0mPOST /api/goals [32m201[0m 4.761 ms - 411[0m
+[0] [0mGET /api/suggestions [32m200[0m 33.985 ms - 241[0m
+[0] [0mPOST /api/goals [32m201[0m 3.553 ms - 408[0m
+[0] [0mGET /api/goals [32m200[0m 13.053 ms - 410[0m
+[0] [0mGET /api/transactions [36m304[0m 13.838 ms - -[0m
+[0] [0mGET /api/suggestions [32m200[0m 12.175 ms - 162[0m
+[0] [0mGET /api/analytics [32m200[0m 21.582 ms - 561[0m
+[0] [0mGET /api/budgets [36m304[0m 3.299 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[1] [2m12:33:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/GoalList.jsx, /src/components/TransactionList.jsx, /src/components/BudgetManager.jsx, /src/components/BudgetAlerts.jsx, /src/components/CurrencyPair.jsx, /src/components/RecentExpenses.jsx[22m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/transactions [36m304[0m 22.693 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 18.002 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 36.656 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 40.733 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.113 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 15.759 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.966 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 14.697 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 23.494 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 9.404 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 8.873 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.439 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.879 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.498 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.692 ms - -[0m
+[1] [2m12:34:17 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 12.416 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.148 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.604 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.876 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.819 ms - -[0m
+[1] [2m12:34:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 12.111 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.879 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.144 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 12.818 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.143 ms - -[0m
+[1] [2m12:34:37 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/register [32m201[0m 347.066 ms - 394[0m
+[0] [0mPUT /api/auth/me [32m200[0m 12.714 ms - 438[0m
+[0] [0mPUT /api/auth/password [32m200[0m 666.395 ms - 44[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966119,
+[0]   length: 6966119,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:35:04 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:68:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966121,
+[0]   length: 6966121,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:35:11 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:68:24
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 331.849 ms - 44[0m
+[1] [2m12:35:31 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 334.030 ms - 44[0m
+[1] [2m12:35:32 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 307.932 ms - 44[0m
+[1] [2m12:35:36 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 299.987 ms - 44[0m
+[1] [2m12:35:39 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 289.291 ms - 44[0m
+[1] [2m12:35:39 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 436.544 ms - 44[0m
+[1] [2m12:35:40 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 566.479 ms - 44[0m
+[1] [2m12:35:41 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPUT /api/auth/password [33m401[0m 422.300 ms - 44[0m
+[1] [2m12:35:41 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: Current password is incorrect.
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > savePassword src/components/ProfileSettings.jsx:80:4
+[1] 
+[0] [0mPOST /api/auth/login [32m200[0m 298.416 ms - 366[0m
+[0] [0mGET /api/transactions [36m304[0m 13.640 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.636 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.955 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 14.280 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.138 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.578 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.035 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.145 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.119 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 11.132 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.113 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.433 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 6.831 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.280 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.224 ms - -[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:36:55 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:68:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:36:57 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:68:24
+[1] 
+[1] [2m12:41:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ProfileSettings.jsx[22m
+[1] [2m12:41:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m12:41:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mGET /api/transactions [36m304[0m 13.782 ms - -[0m
+[0] [0mGET /api/auth/me [32m200[0m 7.812 ms - 179[0m
+[0] [0mGET /api/goals [36m304[0m 14.091 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 14.294 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.224 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 5.920 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 12.704 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.287 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.706 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.254 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 6.481 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.026 ms - -[0m
+[0] [0mPOST /api/auth/register [32m201[0m 291.068 ms - 390[0m
+[0] [0mPUT /api/auth/me [32m200[0m 3.511 ms - 446[0m
+[0] [0mPOST /api/auth/login [32m200[0m 358.473 ms - 446[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:42:55 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:42:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:42:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:42:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] [0mGET /api/auth/me [36m304[0m 10.412 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 17.910 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 17.349 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 17.197 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 5.060 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 28.496 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 10.298 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 10.401 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 10.684 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 5.130 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.515 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.223 ms - -[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:17 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:19 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:19 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:19 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:24 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:43:25 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:70:24
+[1] 
+[1] [2m12:45:33 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ProfileSettings.jsx[22m
+[0] [0mPOST /api/auth/register [32m201[0m 310.080 ms - 398[0m
+[0] [0mPUT /api/auth/me [32m200[0m 4.965 ms - 434[0m
+[0] [0mPOST /api/auth/login [32m200[0m 312.152 ms - 434[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[1] [2m12:46:14 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled rejection] [1mError[22m: request entity too large
+[1] [39m > request src/utils/api.js:30:10
+[1]     28 |    if (!response.ok) {
+[1]     29 |      const error = await response.json().catch(() => ({ message: "Request failed" }));
+[1]     30 |      throw new Error(error.message || "Request failed");
+[1]        |            ^
+[1]     31 |    }
+[1]     32 |  
+[1]  > saveProfile src/components/ProfileSettings.jsx:83:24
+[1] 
+[0] [0mPUT /api/auth/me [32m200[0m 5.718 ms - 46968[0m
+[0] [0mGET /api/auth/me [32m200[0m 7.378 ms - 46781[0m
+[0] [0mGET /api/transactions [36m304[0m 16.183 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.215 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 15.857 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 15.565 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.491 ms - -[0m
+[0] [0mPUT /api/auth/me [32m200[0m 4.760 ms - 46768[0m
+[0] [0mGET /api/auth/me [32m200[0m 6.802 ms - 46581[0m
+[0] [0mGET /api/transactions [36m304[0m 13.772 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.064 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.205 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 11.859 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.078 ms - -[0m
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[0] PayloadTooLargeError: request entity too large
+[0]     at readStream (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:163:17)
+[0]     at getRawBody (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\raw-body\index.js:116:12)
+[0]     at read (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\read.js:79:3)
+[0]     at jsonParser (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\body-parser\lib\types\json.js:138:5)
+[0]     at Layer.handle [as handle_request] (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\layer.js:95:5)
+[0]     at trim_prefix (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:328:13)
+[0]     at C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:286:9
+[0]     at router.process_params (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:346:12)
+[0]     at next (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\express\lib\router\index.js:280:10)
+[0]     at cors (C:\Users\jaypa\Documents\Codex\2026-04-20-project-summary-smart-expense-tracker-smart\server\node_modules\cors\lib\index.js:188:7) {
+[0]   expected: 6966109,
+[0]   length: 6966109,
+[0]   limit: 2097152,
+[0]   type: 'entity.too.large'
+[0] }
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m12:48:19 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ProfileSettings.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/health [32m200[0m 3.891 ms - 45[0m
+[0] [0mPUT /api/auth/me [32m200[0m 24.250 ms - 35865[0m
+[0] [0mGET /api/auth/me [32m200[0m 11.249 ms - 35678[0m
+[0] [0mGET /api/transactions [36m304[0m 20.552 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 21.100 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 26.504 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 45.905 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.130 ms - -[0m
+[0] [0mPUT /api/auth/me [32m200[0m 4.635 ms - 35875[0m
+[0] [0mGET /api/auth/me [32m200[0m 6.330 ms - 35688[0m
+[0] [0mGET /api/goals [36m304[0m 17.221 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 16.504 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 16.855 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 17.732 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.466 ms - -[0m
+[0] [0mPUT /api/auth/me [32m200[0m 5.774 ms - 35877[0m
+[0] [0mGET /api/auth/me [32m200[0m 7.937 ms - 35690[0m
+[0] [0mGET /api/transactions [36m304[0m 14.708 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.196 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.885 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.929 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.088 ms - -[0m
+[1] [2m12:52:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AuthForm.jsx[22m
+[1] [2m12:52:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mPOST /api/auth/login [32m200[0m 300.306 ms - 35877[0m
+[0] [0mGET /api/auth/me [36m304[0m 5.838 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 14.484 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.143 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 14.201 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.006 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.779 ms - -[0m
+[1] [2m12:52:38 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/login [32m200[0m 312.147 ms - 35877[0m
+[0] [0mGET /api/auth/me [36m304[0m 10.584 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 18.354 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 17.976 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 18.289 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 17.923 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.994 ms - -[0m
+[1] [2m12:56:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AuthForm.jsx[22m
+[1] [2m12:56:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/auth/me [36m304[0m 9.810 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 16.457 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 15.635 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 15.634 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.319 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.776 ms - -[0m
+[1] [2m12:56:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/PublicHome.jsx[22m
+[1] [2m12:59:12 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m12:59:12 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/login [32m200[0m 310.021 ms - 35877[0m
+[0] [0mGET /api/auth/me [36m304[0m 9.044 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 15.237 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.277 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 15.219 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.417 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.178 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 312.810 ms - 35877[0m
+[0] [0mGET /api/auth/me [36m304[0m 8.012 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.894 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 13.639 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 13.710 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.927 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.414 ms - -[0m
+[1] [2m1:01:06 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m1:03:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m1:03:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mGET /api/auth/me [36m304[0m 7.570 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 12.555 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 11.887 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 11.987 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 12.218 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.641 ms - -[0m
+[1] [2m1:05:26 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m1:05:26 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mGET /api/auth/me [36m304[0m 8.509 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.236 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.849 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 12.959 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.954 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.803 ms - -[0m
+[1] [2m1:07:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m1:07:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mGET /api/transactions [36m304[0m 13.451 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 15.294 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 8.271 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 16.946 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.492 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.667 ms - -[0m
+[1] [2m1:08:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m1:08:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mGET /api/auth/me [36m304[0m 11.247 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 18.999 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 18.768 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 19.110 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 19.207 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.843 ms - -[0m
+[1] [2m1:10:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m1:12:18 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[1] [2m1:16:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/BudgetManager.jsx[22m
+[1] [2m1:16:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/DashboardCharts.jsx[22m
+[1] [2m1:16:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/GoalList.jsx[22m
+[1] [2m1:16:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionList.jsx[22m
+[1] [2m1:16:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RecentExpenses.jsx[22m
+[1] [2m1:16:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/TransactionForm.jsx[22m
+[1] [2m1:16:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/IncomeForm.jsx[22m
+[1] [2m1:17:29 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/transactions [36m304[0m 41.473 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 34.580 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 55.185 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 57.244 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 67.651 ms - 578[0m
+[0] [0mGET /api/transactions [36m304[0m 14.441 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.149 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 7.870 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 16.954 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 9.981 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.305 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.403 ms - -[0m
+[1] [2m1:17:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[1] [2m1:17:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ProfileSettings.jsx[22m
+[0] [0mGET /api/auth/me [36m304[0m 9.302 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 14.393 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.627 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 14.613 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 13.456 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.143 ms - -[0m
+[1] [2m1:17:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AuthForm.jsx[22m
+[1] [2m1:17:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Suggestions.jsx[22m
+[1] [2m1:18:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m1:18:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[1] [2m1:18:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/GoalForm.jsx[22m
+[0] [0mPOST /api/auth/register [32m201[0m 398.017 ms - 403[0m
+[0] [0mPOST /api/budgets [32m201[0m 13.975 ms - 208[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.908 ms - 359[0m
+[0] [0mGET /api/analytics [32m200[0m 7.855 ms - 1085[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.240 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 17.551 ms - 367[0m
+[0] [0mPOST /api/transactions [32m201[0m 17.107 ms - 365[0m
+[0] [0mPOST /api/transactions [32m201[0m 16.844 ms - 359[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.506 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 12.553 ms - 370[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.985 ms - 367[0m
+[0] [0mPOST /api/goals [32m201[0m 7.731 ms - 417[0m
+[0] [0mPOST /api/goals [32m201[0m 7.071 ms - 418[0m
+[0] [0mPOST /api/budgets [32m201[0m 6.560 ms - 208[0m
+[0] [0mPOST /api/budgets [32m201[0m 6.219 ms - 211[0m
+[0] [0mGET /api/transactions [32m200[0m 12.080 ms - 2556[0m
+[0] [0mGET /api/goals [32m200[0m 13.597 ms - 1247[0m
+[0] [0mGET /api/analytics [32m200[0m 17.056 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 15.622 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 3.480 ms - 422[0m
+[0] [0mPOST /api/transactions [32m201[0m 23.593 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 22.632 ms - 367[0m
+[0] [0mPOST /api/transactions [32m201[0m 21.543 ms - 365[0m
+[0] [0mPOST /api/transactions [32m201[0m 19.676 ms - 359[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.448 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 17.781 ms - 370[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.874 ms - 367[0m
+[0] [0mPOST /api/goals [32m201[0m 5.301 ms - 417[0m
+[0] [0mPOST /api/goals [32m201[0m 4.687 ms - 418[0m
+[0] [0mPOST /api/budgets [32m201[0m 5.528 ms - 208[0m
+[0] [0mPOST /api/budgets [32m201[0m 5.122 ms - 211[0m
+[0] [0mGET /api/transactions [32m200[0m 8.320 ms - 5111[0m
+[0] [0mGET /api/goals [32m200[0m 12.626 ms - 2084[0m
+[0] [0mGET /api/analytics [32m200[0m 14.571 ms - 1815[0m
+[0] [0mGET /api/suggestions [32m200[0m 17.254 ms - 616[0m
+[0] [0mGET /api/budgets [32m200[0m 3.350 ms - 422[0m
+[1] [2m1:19:50 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:50 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mPOST /api/transactions [32m201[0m 18.511 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 17.892 ms - 367[0m
+[0] [0mPOST /api/transactions [32m201[0m 16.740 ms - 365[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.737 ms - 359[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.388 ms - 360[0m
+[0] [0mPOST /api/transactions [32m201[0m 13.812 ms - 370[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.808 ms - 367[0m
+[0] [0mPOST /api/goals [32m201[0m 6.300 ms - 417[0m
+[0] [0mPOST /api/goals [32m201[0m 5.749 ms - 418[0m
+[0] [0mPOST /api/budgets [32m201[0m 5.769 ms - 208[0m
+[0] [0mPOST /api/budgets [32m201[0m 5.424 ms - 211[0m
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mGET /api/transactions [32m200[0m 16.065 ms - 7666[0m
+[0] [0mGET /api/goals [32m200[0m 16.465 ms - 2921[0m
+[0] [0mGET /api/analytics [32m200[0m 19.270 ms - 1815[0m
+[0] [0mGET /api/suggestions [32m200[0m 23.938 ms - 756[0m
+[0] [0mGET /api/budgets [32m200[0m 3.942 ms - 422[0m
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:52 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:53 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:53 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:53 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:53 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:19:56 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mDELETE /api/goals/69e6602466303adb8612024a [32m204[0m 4.226 ms - -[0m
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mGET /api/transactions [36m304[0m 19.856 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 17.443 ms - 2503[0m
+[0] [0mGET /api/analytics [32m200[0m 19.013 ms - 1815[0m
+[0] [0mGET /api/suggestions [32m200[0m 21.694 ms - 686[0m
+[0] [0mGET /api/budgets [36m304[0m 3.643 ms - -[0m
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mDELETE /api/goals/69e6602466303adb8612024c [32m204[0m 4.505 ms - -[0m
+[1] [2m1:21:47 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:47 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:47 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mGET /api/transactions [36m304[0m 15.325 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 14.810 ms - 2084[0m
+[0] [0mGET /api/analytics [32m200[0m 18.089 ms - 1815[0m
+[0] [0mGET /api/suggestions [32m200[0m 19.422 ms - 616[0m
+[0] [0mGET /api/budgets [36m304[0m 3.111 ms - -[0m
+[1] [2m1:21:47 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:47 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mDELETE /api/goals/69e6603666303adb86120277 [32m204[0m 6.915 ms - -[0m
+[1] [2m1:21:48 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save $150 per month to reach your Laptop purchase goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:48 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mGET /api/transactions [36m304[0m 12.718 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 12.991 ms - 1666[0m
+[0] [0mGET /api/analytics [32m200[0m 15.504 ms - 1815[0m
+[0] [0mGET /api/suggestions [32m200[0m 16.545 ms - 546[0m
+[0] [0mGET /api/budgets [36m304[0m 3.211 ms - -[0m
+[1] [2m1:21:48 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[1] [2m1:21:49 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mDELETE /api/goals/69e6603666303adb86120279 [32m204[0m 3.216 ms - -[0m
+[1] [2m1:21:49 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mWarning: Encountered two children with the same key, `You need to save ₹8,000 per month to reach your Travel plan goal.`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+[1]     at div
+[1]     at section
+[1]     at Suggestions (http://localhost:5173/src/components/Suggestions.jsx?t=1776705478453:3:39)
+[1]     at div
+[1]     at section
+[1]     at main
+[1]     at App (http://localhost:5173/src/App.jsx?t=1776705465260:87:26)
+[0] [0mGET /api/transactions [36m304[0m 14.730 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 16.728 ms - 1247[0m
+[0] [0mGET /api/analytics [32m200[0m 19.316 ms - 1813[0m
+[0] [0mGET /api/suggestions [32m200[0m 19.496 ms - 476[0m
+[0] [0mGET /api/budgets [36m304[0m 3.262 ms - -[0m
+[0] [0mDELETE /api/goals/69e6603866303adb861202a4 [32m204[0m 2.780 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 7.915 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 7.622 ms - 829[0m
+[0] [0mGET /api/analytics [32m200[0m 11.325 ms - 1813[0m
+[0] [0mGET /api/suggestions [32m200[0m 11.483 ms - 406[0m
+[0] [0mGET /api/budgets [36m304[0m 2.313 ms - -[0m
+[0] [0mDELETE /api/goals/69e6603866303adb861202a6 [32m204[0m 3.804 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 13.460 ms - -[0m
+[0] [0mGET /api/goals [32m200[0m 13.246 ms - 410[0m
+[0] [0mGET /api/analytics [32m200[0m 16.428 ms - 1809[0m
+[0] [0mGET /api/suggestions [32m200[0m 16.999 ms - 336[0m
+[0] [0mGET /api/budgets [36m304[0m 2.677 ms - -[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] [0mGET /api/transactions [32m200[0m 40.730 ms - 7981[0m
+[1] [2m1:23:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[0] [0mGET /api/goals [32m200[0m 34.478 ms - 425[0m
+[0] [0mGET /api/analytics [36m304[0m 66.727 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 75.229 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 24.287 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 24.288 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 10.054 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 103.279 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 38.845 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.646 ms - -[0m
+[0] [0mGET /api/budgets [32m200[0m 8.048 ms - 452[0m
+[0] [0mGET /api/budgets [36m304[0m 4.023 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 13.047 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 21.714 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 21.413 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 24.086 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 7.063 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 42.204 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 17.389 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 17.315 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 19.882 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 7.827 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 6.223 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.952 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb8612029d [32m204[0m 9.641 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb8612029b [32m204[0m 13.109 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb86120299 [32m204[0m 12.133 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb86120297 [32m204[0m 11.862 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb86120295 [32m204[0m 11.803 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb86120293 [32m204[0m 11.556 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb86120270 [32m204[0m 11.859 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb8612026e [32m204[0m 13.188 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb8612026c [32m204[0m 13.708 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb8612026a [32m204[0m 13.618 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb86120268 [32m204[0m 13.567 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb86120266 [32m204[0m 11.935 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb86120243 [32m204[0m 11.360 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb86120241 [32m204[0m 11.692 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb8612023e [32m204[0m 11.930 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb8612023c [32m204[0m 11.197 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb8612023a [32m204[0m 10.960 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb86120238 [32m204[0m 11.512 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603866303adb861202a0 [32m204[0m 9.034 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6603666303adb86120273 [32m204[0m 7.628 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6602466303adb86120246 [32m204[0m 4.429 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6602436b9bf31b4b0a0e6 [32m204[0m 5.138 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6602436b9bf31b4b0a0e7 [32m204[0m 4.821 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 11.516 ms - 2[0m
+[0] [0mGET /api/goals [36m304[0m 13.035 ms - -[0m
+[0] [0mGET /api/analytics [32m200[0m 13.407 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 14.624 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 2.522 ms - 2[0m
+[0] [0mPOST /api/transactions [32m201[0m 24.005 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 23.323 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 23.057 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 23.230 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 23.168 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 22.582 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.595 ms - 384[0m
+[0] [0mPOST /api/goals [32m201[0m 7.453 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 6.813 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 16.247 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 15.371 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 11.403 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 11.777 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 15.640 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 14.014 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 3.501 ms - 450[0m
+[0] [0mPOST /api/auth/register [32m201[0m 299.992 ms - 395[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.955 ms - 367[0m
+[0] [0mPOST /api/goals [32m201[0m 2.877 ms - 434[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.585 ms - 222[0m
+[0] [0mDELETE /api/transactions/69e6611f23eadca0f1921338 [32m204[0m 2.648 ms - -[0m
+[0] [0mDELETE /api/goals/69e6611f23eadca0f192133b [32m204[0m 2.807 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6611f36b9bf31b4b0a0ea [32m204[0m 3.717 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 2.509 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 3.029 ms - 2[0m
+[0] [0mGET /api/budgets [32m200[0m 2.606 ms - 2[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f192131a [32m204[0m 9.178 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f1921317 [32m204[0m 9.218 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f1921315 [32m204[0m 8.938 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f1921313 [32m204[0m 9.114 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f192130f [32m204[0m 9.851 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f192130d [32m204[0m 7.772 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6611823eadca0f1921311 [32m204[0m 2.946 ms - -[0m
+[0] [0mDELETE /api/goals/69e6611823eadca0f192131e [32m204[0m 3.189 ms - -[0m
+[0] [0mDELETE /api/goals/69e6611823eadca0f1921320 [32m204[0m 3.011 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6611836b9bf31b4b0a0e8 [32m204[0m 2.706 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6611836b9bf31b4b0a0e9 [32m204[0m 2.310 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 11.059 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 10.832 ms - 425[0m
+[0] [0mGET /api/analytics [32m200[0m 10.509 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 11.262 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 3.421 ms - 2[0m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[1] [2m1:28:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/GoalList.jsx, /src/components/TransactionList.jsx, /src/components/BudgetManager.jsx, /src/components/BudgetAlerts.jsx, /src/components/CurrencyPair.jsx, /src/components/RecentExpenses.jsx, /src/components/ProfileSettings.jsx, /src/components/MonthlyReport.jsx[22m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[1] [2m1:28:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AuthForm.jsx[22m
+[0] [0mPOST /api/auth/forgot-password [32m200[0m 25.418 ms - 166[0m
+[0] [0mPOST /api/auth/register [32m201[0m 299.292 ms - 390[0m
+[0] [0mPOST /api/auth/forgot-password [32m200[0m 3.294 ms - 166[0m
+[0] [0mPOST /api/auth/reset-password [32m200[0m 292.804 ms - 390[0m
+[0] [0mPOST /api/auth/login [32m200[0m 276.373 ms - 390[0m
+[0] [0mPOST /api/auth/forgot-password [33m404[0m 2.166 ms - 47[0m
+[0] [0mPOST /api/auth/forgot-password [33m404[0m 2.256 ms - 47[0m
+[0] [0mPOST /api/auth/forgot-password [32m200[0m 4.033 ms - 166[0m
+[0] [0mPOST /api/auth/login [32m200[0m 305.324 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 23.136 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 23.504 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 23.297 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 45.263 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 74.754 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.355 ms - -[0m
+[1] [2m1:30:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/WelcomeOverlay.jsx[22m
+[1] [2m1:30:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[0] [0mPOST /api/auth/login [32m200[0m 351.721 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 15.251 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 14.867 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 10.644 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.425 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 22.559 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.273 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 297.388 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 15.029 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 18.855 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 11.573 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 20.227 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 19.767 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 4.011 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 298.291 ms - 35877[0m
+[0] [0mGET /api/goals [36m304[0m 16.306 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 14.385 ms - -[0m
+[0] [0mGET /api/transactions [36m304[0m 20.898 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 21.035 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 25.104 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.674 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 310.490 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 19.826 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 19.449 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 19.335 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 9.551 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 20.602 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.685 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.922 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.997 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 19.503 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 19.266 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 19.412 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 18.878 ms - 384[0m
+[0] [0mPOST /api/transactions [32m201[0m 4.780 ms - 381[0m
+[0] [0mPOST /api/goals [32m201[0m 6.301 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 6.094 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 11.240 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 10.717 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 10.774 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 11.050 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 25.465 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 24.331 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 4.397 ms - 450[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe7051211 [32m204[0m 11.314 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe705120f [32m204[0m 13.137 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe705120d [32m204[0m 12.269 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe705120b [32m204[0m 11.868 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe7051209 [32m204[0m 11.944 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe7051207 [32m204[0m 11.487 ms - -[0m
+[0] [0mDELETE /api/transactions/69e6675ccf658d1fe7051214 [32m204[0m 6.541 ms - -[0m
+[0] [0mDELETE /api/goals/69e6675ccf658d1fe7051218 [32m204[0m 4.315 ms - -[0m
+[0] [0mDELETE /api/goals/69e6675ccf658d1fe705121a [32m204[0m 3.810 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6675c36b9bf31b4b0a0eb [32m204[0m 4.051 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6675c36b9bf31b4b0a0ec [32m204[0m 4.000 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 15.589 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 15.233 ms - 425[0m
+[0] [0mGET /api/analytics [32m200[0m 14.870 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 15.396 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 3.113 ms - 2[0m
+[0] [0mPOST /api/auth/login [32m200[0m 309.363 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 10.924 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 10.577 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 18.749 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 18.338 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 17.831 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.535 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 16.745 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 15.776 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 15.056 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.565 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 13.587 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 12.804 ms - 384[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.972 ms - 381[0m
+[0] [0mPOST /api/goals [32m201[0m 6.278 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 5.686 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 6.808 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 6.011 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 11.719 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 11.675 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 15.173 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 12.665 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 3.448 ms - 450[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe7051272 [32m204[0m 8.616 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe7051270 [32m204[0m 8.114 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe705126e [32m204[0m 8.647 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe705126c [32m204[0m 9.924 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe705126a [32m204[0m 8.378 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe7051268 [32m204[0m 5.054 ms - -[0m
+[0] [0mDELETE /api/transactions/69e670e8cf658d1fe7051275 [32m204[0m 3.507 ms - -[0m
+[0] [0mDELETE /api/goals/69e670e8cf658d1fe7051279 [32m204[0m 2.670 ms - -[0m
+[0] [0mDELETE /api/goals/69e670e8cf658d1fe705127b [32m204[0m 2.657 ms - -[0m
+[0] [0mDELETE /api/budgets/69e670e836b9bf31b4b0a0ed [32m204[0m 2.542 ms - -[0m
+[0] [0mDELETE /api/budgets/69e670e836b9bf31b4b0a0ee [32m204[0m 2.125 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 11.521 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 11.397 ms - 425[0m
+[0] [0mGET /api/analytics [32m200[0m 12.540 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 12.372 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 2.337 ms - 2[0m
+[0] [0mPUT /api/auth/me [32m200[0m 4.737 ms - 35877[0m
+[0] [0mGET /api/auth/me [32m200[0m 4.165 ms - 35690[0m
+[0] [0mGET /api/transactions [36m304[0m 8.597 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 16.235 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 15.392 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 15.199 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 2.604 ms - -[0m
+[0] [0mPOST /api/auth/login [32m200[0m 342.268 ms - 35877[0m
+[0] [0mGET /api/transactions [36m304[0m 14.743 ms - -[0m
+[0] [0mGET /api/auth/me [36m304[0m 9.228 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 17.185 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 17.645 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 18.384 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.974 ms - -[0m
+[0] [0mPOST /api/transactions [32m201[0m 11.412 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.743 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.321 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.656 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.588 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.322 ms - 384[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.622 ms - 381[0m
+[0] [0mPOST /api/goals [32m201[0m 3.398 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 3.746 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.395 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.121 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 8.672 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 8.871 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 10.444 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 11.637 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 3.372 ms - 450[0m
+[0] [0mPUT /api/auth/me [32m200[0m 4.987 ms - 28813[0m
+[0] [0mGET /api/auth/me [32m200[0m 2.650 ms - 28626[0m
+[0] [0mGET /api/transactions [36m304[0m 12.092 ms - -[0m
+[0] [0mGET /api/goals [36m304[0m 12.345 ms - -[0m
+[0] [0mGET /api/analytics [36m304[0m 14.877 ms - -[0m
+[0] [0mGET /api/suggestions [36m304[0m 12.688 ms - -[0m
+[0] [0mGET /api/budgets [36m304[0m 3.348 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512e4 [32m204[0m 14.808 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512e2 [32m204[0m 13.582 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512de [32m204[0m 13.169 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512e0 [32m204[0m 12.667 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512dc [32m204[0m 12.411 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512da [32m204[0m 12.405 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67256cf658d1fe70512e7 [32m204[0m 2.602 ms - -[0m
+[0] [0mDELETE /api/goals/69e67256cf658d1fe70512eb [32m204[0m 2.618 ms - -[0m
+[0] [0mDELETE /api/goals/69e67256cf658d1fe70512ed [32m204[0m 2.097 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6725636b9bf31b4b0a0ef [32m204[0m 3.042 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6725636b9bf31b4b0a0f0 [32m204[0m 2.938 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 8.508 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 9.020 ms - 425[0m
+[0] [0mGET /api/analytics [32m200[0m 9.350 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 9.905 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 3.255 ms - 2[0m
+[0] [0mPOST /api/transactions [32m201[0m 11.577 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.896 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.236 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 9.965 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 9.829 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.276 ms - 384[0m
+[0] [0mPOST /api/transactions [32m201[0m 3.068 ms - 381[0m
+[0] [0mPOST /api/goals [32m201[0m 3.743 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 3.349 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.482 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 4.019 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 5.808 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 5.565 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 7.064 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 8.674 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 5.312 ms - 450[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe7051346 [32m204[0m 6.439 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe7051344 [32m204[0m 9.490 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe7051342 [32m204[0m 9.238 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe7051340 [32m204[0m 9.998 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe705133e [32m204[0m 9.884 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe705133c [32m204[0m 8.571 ms - -[0m
+[0] [0mDELETE /api/transactions/69e67344cf658d1fe7051349 [32m204[0m 7.982 ms - -[0m
+[0] [0mDELETE /api/goals/69e67344cf658d1fe705134d [32m204[0m 2.785 ms - -[0m
+[0] [0mDELETE /api/goals/69e67344cf658d1fe705134f [32m204[0m 2.386 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6734436b9bf31b4b0a0f1 [32m204[0m 2.446 ms - -[0m
+[0] [0mDELETE /api/budgets/69e6734436b9bf31b4b0a0f2 [32m204[0m 2.188 ms - -[0m
+[0] [0mGET /api/transactions [32m200[0m 16.209 ms - 2[0m
+[0] [0mGET /api/goals [32m200[0m 12.995 ms - 425[0m
+[0] [0mGET /api/analytics [32m200[0m 11.275 ms - 578[0m
+[0] [0mGET /api/suggestions [32m200[0m 10.331 ms - 162[0m
+[0] [0mGET /api/budgets [32m200[0m 5.808 ms - 2[0m
+[0] [0mPOST /api/transactions [32m201[0m 14.748 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 13.511 ms - 381[0m
+[0] [0mPOST /api/transactions [32m201[0m 12.690 ms - 379[0m
+[0] [0mPOST /api/transactions [32m201[0m 11.205 ms - 373[0m
+[0] [0mPOST /api/transactions [32m201[0m 10.989 ms - 374[0m
+[0] [0mPOST /api/transactions [32m201[0m 11.205 ms - 384[0m
+[0] [0mPOST /api/transactions [32m201[0m 2.705 ms - 381[0m
+[0] [0mPOST /api/goals [32m201[0m 3.865 ms - 431[0m
+[0] [0mPOST /api/goals [32m201[0m 3.480 ms - 432[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.853 ms - 222[0m
+[0] [0mPOST /api/budgets [32m201[0m 3.502 ms - 225[0m
+[0] [0mGET /api/transactions [32m200[0m 6.504 ms - 2654[0m
+[0] [0mGET /api/goals [32m200[0m 6.205 ms - 1290[0m
+[0] [0mGET /api/analytics [32m200[0m 7.870 ms - 1791[0m
+[0] [0mGET /api/suggestions [32m200[0m 9.531 ms - 474[0m
+[0] [0mGET /api/budgets [32m200[0m 2.484 ms - 450[0m
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting child process[39m
+[0] [32m[nodemon] starting `node src/index.js`[39m
+[1] npm run dev --prefix client exited with code 1
+[0] MongoDB connected
+[0] API running at http://localhost:5000
+[0] ^C^CTerminate batch job (Y/N)? npm run dev --prefix server exited with code 3221225786
