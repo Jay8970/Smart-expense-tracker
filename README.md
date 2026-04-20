@@ -152,7 +152,9 @@ For a production project, replace this with a live exchange-rate API and keep `J
 Frontend deployment:
 
 - Deploy `client/` to Vercel or Netlify.
-- Set `VITE_API_URL` to your deployed backend URL plus `/api`.
+- Set `VITE_API_URL` in the Vercel project environment variables to your deployed backend URL plus `/api`, for example `https://your-render-service.onrender.com/api`.
+- In Vercel, use `client` as the root directory, `npm install` as the install command, `npm run build` as the build command, and `dist` as the output directory.
+- After changing `VITE_API_URL`, redeploy the frontend. Vite reads this value at build time.
 
 Backend deployment:
 
@@ -160,8 +162,10 @@ Backend deployment:
 - Add these environment variables:
   - `MONGO_URI`
   - `PORT`
-  - `CLIENT_URL`
+  - `CLIENT_URLS`, for example `https://your-vercel-app.vercel.app,http://localhost:5173`
   - `JWT_SECRET`
+- In Render, use `server` as the root directory, `npm install` as the build command, and `npm start` as the start command.
+- If you use only one frontend URL, `CLIENT_URL` still works. Use `CLIENT_URLS` when you want to allow local development, your production Vercel domain, and Vercel preview domains you trust.
 
 Database:
 
