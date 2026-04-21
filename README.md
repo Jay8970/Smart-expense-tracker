@@ -62,6 +62,7 @@ copy server\.env.example server\.env
 MONGO_URI=mongodb://127.0.0.1:27017/smart-expense-tracker
 PORT=5000
 CLIENT_URL=http://localhost:5173
+CLIENT_URLS=http://localhost:5173
 JWT_SECRET=change-this-secret-before-deployment
 ```
 
@@ -151,10 +152,9 @@ For a production project, replace this with a live exchange-rate API and keep `J
 
 Frontend deployment:
 
-- Deploy `client/` to Vercel or Netlify.
+- `vercel.json` is included so Vercel can deploy from the repo root.
 - Set `VITE_API_URL` in the Vercel project environment variables to your deployed backend URL plus `/api`, for example `https://your-render-service.onrender.com/api`.
-- In Vercel, use `client` as the root directory, `npm install` as the install command, `npm run build` as the build command, and `dist` as the output directory.
-- After changing `VITE_API_URL`, redeploy the frontend. Vite reads this value at build time.
+- If you change `VITE_API_URL`, redeploy the frontend because Vite reads it at build time.
 
 Backend deployment:
 
@@ -171,3 +171,22 @@ Database:
 
 - Use MongoDB Atlas for a hosted production database.
 - Add the deployed backend IP/network access rule in Atlas.
+
+## Quick Deploy Notes
+
+GitHub:
+
+- Push this repo to `main` on GitHub.
+
+Vercel:
+
+- Import the GitHub repo.
+- Vercel will use the repo root with `vercel.json`.
+- Set `VITE_API_URL` to your live backend URL plus `/api`.
+
+Render:
+
+- Use `render.yaml` as a Blueprint if you want both frontend and backend on Render.
+- For the API service, set `MONGO_URI` and `CLIENT_URLS`.
+- For the static frontend service, set `VITE_API_URL`.
+- If you use both Vercel and Render frontends, put both frontend URLs in `CLIENT_URLS` separated by commas.
