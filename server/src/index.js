@@ -6,6 +6,7 @@ import { connectDb } from "./db.js";
 import analyticsRouter from "./routes/analytics.js";
 import authRouter from "./routes/auth.js";
 import budgetsRouter from "./routes/budgets.js";
+import exchangeRateRouter from "./routes/exchangeRate.js";
 import goalsRouter from "./routes/goals.js";
 import suggestionsRouter from "./routes/suggestions.js";
 import transactionsRouter from "./routes/transactions.js";
@@ -43,6 +44,7 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", app: "Smart Expense Tracker" });
 });
 
+app.use("/api/exchange-rate", exchangeRateRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/transactions", transactionsRouter);
 app.use("/api/goals", goalsRouter);

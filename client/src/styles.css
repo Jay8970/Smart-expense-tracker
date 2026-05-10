@@ -285,14 +285,23 @@ body.dark-mode .mini {
 }
 
 .currency-badge {
-  align-items: center;
+  align-items: flex-start;
   border-radius: 8px;
   display: inline-flex;
+  flex-direction: column;
   font-size: 0.95rem;
   font-weight: 900;
-  line-height: 1;
+  gap: 4px;
+  line-height: 1.1;
   padding: 8px 10px;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.currency-badge-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  opacity: 0.82;
 }
 
 .currency-badge.cad {

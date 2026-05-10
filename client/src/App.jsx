@@ -59,6 +59,7 @@ export default function App() {
   const [goals, setGoals] = useState([]);
   const [budgets, setBudgets] = useState([]);
   const [analytics, setAnalytics] = useState(emptyAnalytics);
+  const [exchangeRate, setExchangeRate] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [editingGoal, setEditingGoal] = useState(null);
@@ -105,6 +106,24 @@ export default function App() {
   }, [auth?.token]);
 
   useEffect(() => {
+    async function loadExchangeRate() {
+      if (!auth?.token) {
+        setExchangeRate(null);
+        return;
+      }
+
+      try {
+        const rateData = await api.getExchangeRate();
+        setExchangeRate(rateData);
+      } catch (_error) {
+        setExchangeRate(null);
+      }
+    }
+
+    loadExchangeRate();
+  }, [auth?.token]);
+
+  useEffect(() => {
     async function refreshProfile() {
       if (!auth?.token || auth.user) return;
       try {
@@ -147,6 +166,7 @@ export default function App() {
     setGoals([]);
     setBudgets([]);
     setAnalytics(emptyAnalytics);
+    setExchangeRate(null);
     setSuggestions([]);
     setEditingTransaction(null);
     setEditingGoal(null);
@@ -381,7 +401,11 @@ export default function App() {
               <button className="ghost" type="button" onClick={() => window.print()}>Print / Save PDF</button>
             </div>
           </section>
-          <DashboardCharts analytics={analytics} />
+          <DashboardCharts
+            analytics={analytics}
+            displayCurrency={auth?.user?.defaultCurrency || "CAD"}
+            exchangeRate={exchangeRate}
+          />
         </>
       );
     }
@@ -428,13 +452,18 @@ export default function App() {
         )}
 
         <section className="dashboard-section">
-          <DashboardCharts analytics={analytics} variant="dashboard" />
+          <DashboardCharts
+            analytics={analytics}
+            displayCurrency={auth?.user?.defaultCurrency || "CAD"}
+            exchangeRate={exchangeRate}
+            variant="dashboard"
+          />
         </section>
 
         <section className="dashboard-bottom">
           <RecentExpenses expenses={expenseTransactions} onViewAll={() => setPage("Expense History")} />
           <div className="stack">
-            <MonthlyReport analytics={analytics} />
+            <MonthlyReport analytics={analytics} exchangeRate={exchangeRate} />
             <Suggestions suggestions={suggestions} />
           </div>
           <GoalList goals={goals} onEdit={(goal) => {

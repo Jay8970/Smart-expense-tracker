@@ -15,7 +15,7 @@ export default function SummaryCards({ summary, goalCount }) {
     {
       label: "Total income",
       value: <CurrencyPair values={dashboard.totalIncome} />,
-      detail: "CAD and INR shown separately"
+      detail: "Canadian Dollar and Indian Rupee shown separately"
     },
     {
       label: "Total expense",

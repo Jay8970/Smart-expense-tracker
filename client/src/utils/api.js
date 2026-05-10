@@ -1,5 +1,19 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 const AUTH_KEY = "smart-expense-auth";
+export const currencyDetails = {
+  CAD: {
+    code: "CAD",
+    label: "Canadian Dollar",
+    shortLabel: "Dollar",
+    locale: "en-CA"
+  },
+  INR: {
+    code: "INR",
+    label: "Indian Rupee",
+    shortLabel: "Rupee",
+    locale: "en-IN"
+  }
+};
 
 export function getStoredAuth() {
   const rawAuth = localStorage.getItem(AUTH_KEY);
@@ -56,13 +70,41 @@ export const api = {
   createBudget: (payload) => request("/budgets", { method: "POST", body: JSON.stringify(payload) }),
   deleteBudget: (id) => request(`/budgets/${id}`, { method: "DELETE" }),
   getAnalytics: () => request("/analytics"),
-  getSuggestions: () => request("/suggestions")
+  getSuggestions: () => request("/suggestions"),
+  getExchangeRate: () => request("/exchange-rate")
 };
 
 export function formatMoney(amount, currency = "CAD") {
-  return new Intl.NumberFormat("en-CA", {
+  return new Intl.NumberFormat(currencyDetails[currency]?.locale || "en-CA", {
     style: "currency",
     currency,
     maximumFractionDigits: 0
   }).format(amount || 0);
+}
+
+export function getCurrencyLabel(currency, variant = "label") {
+  const details = currencyDetails[currency];
+  if (!details) return currency;
+  return variant === "short" ? details.shortLabel : details.label;
+}
+
+export function formatRateDate(dateValue) {
+  if (!dateValue) return "unknown";
+  return new Intl.DateTimeFormat("en-CA", {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  }).format(new Date(dateValue));
+}
+
+export function convertFromBase(amount, targetCurrency, exchangeRate) {
+  const numericAmount = Number(amount || 0);
+  const base = exchangeRate?.base || "CAD";
+  const rates = exchangeRate?.rates || { CAD: 1, INR: 60 };
+
+  if (targetCurrency === base) {
+    return numericAmount;
+  }
+
+  return numericAmount * (Number(rates[targetCurrency]) || 1);
 }

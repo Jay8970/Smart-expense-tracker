@@ -3,7 +3,7 @@ import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
 import { Goal } from "../models/Goal.js";
 import { Transaction } from "../models/Transaction.js";
-import { getExchangeRates, toCad } from "../utils/currency.js";
+import { formatExchangeRate, getExchangeRates, toCad } from "../utils/currency.js";
 
 const router = express.Router();
 
@@ -165,12 +165,7 @@ router.get("/", async (req, res, next) => {
     res.json({
       summary,
       summaryByCurrency,
-      exchangeRate: {
-        base: "CAD",
-        inrPerCad: exchangeRates.rates.INR,
-        fetchedAt: exchangeRates.fetchedAt,
-        source: exchangeRates.source
-      },
+      exchangeRate: formatExchangeRate(exchangeRates),
       dashboard,
       expensesByCategory,
       monthlyTrend

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { formatMoney, storeAuth } from "../utils/api.js";
+import { formatMoney, getCurrencyLabel, storeAuth } from "../utils/api.js";
 import BudgetManager from "./BudgetManager.jsx";
 import CurrencyPair from "./CurrencyPair.jsx";
 
@@ -150,10 +150,10 @@ export default function ProfileSettings({
             <input name="phone" value={profile.phone} onChange={updateProfileField} placeholder="Optional" />
           </label>
           <label>
-            Default currency
+            Preferred chart currency
             <select name="defaultCurrency" value={profile.defaultCurrency} onChange={updateProfileField}>
-              <option value="CAD">CAD</option>
-              <option value="INR">INR</option>
+              <option value="CAD">{getCurrencyLabel("CAD")}</option>
+              <option value="INR">{getCurrencyLabel("INR")}</option>
             </select>
           </label>
           <label className="full">
@@ -209,6 +209,9 @@ export default function ProfileSettings({
         <div className="progress-track large">
           <span style={{ width: `${savingsProgress}%` }} />
         </div>
+        <p className="muted">
+          Charts and converted reports use {getCurrencyLabel(profile.defaultCurrency)}.
+        </p>
         <p className="muted">
           {savingsProgress}% of {formatMoney(Number(profile.monthlySavingsGoal || 0), "CAD")} monthly savings goal.
         </p>

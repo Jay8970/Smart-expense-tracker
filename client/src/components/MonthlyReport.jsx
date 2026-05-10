@@ -1,8 +1,7 @@
-import { formatMoney } from "../utils/api.js";
+import { formatMoney, formatRateDate } from "../utils/api.js";
 
-export default function MonthlyReport({ analytics }) {
+export default function MonthlyReport({ analytics, exchangeRate }) {
   const dashboard = analytics.dashboard || {};
-  const exchangeRate = analytics.exchangeRate;
   const previous = analytics.monthlyTrend?.at(-2);
   const current = analytics.monthlyTrend?.at(-1);
   const currentExpense = current?.expenseCad || 0;
@@ -35,12 +34,21 @@ export default function MonthlyReport({ analytics }) {
         <article>
           <strong>Latest exchange rate</strong>
           <span>
-            {exchangeRate?.inrPerCad
-              ? `1 CAD = ${exchangeRate.inrPerCad.toFixed(2)} INR`
+            {exchangeRate?.rates?.INR
+              ? `1 CAD = ${exchangeRate.rates.INR.toFixed(2)} INR`
               : "Using saved conversion"}
           </span>
         </article>
+        <article>
+          <strong>Rate updated on</strong>
+          <span>{exchangeRate?.fetchedAt ? formatRateDate(exchangeRate.fetchedAt) : "Using fallback rate"}</span>
+        </article>
       </div>
+      {exchangeRate?.stale && (
+        <p className="muted">
+          {exchangeRate.fallbackReason || "Live exchange rates are temporarily unavailable, so the last saved rate is being shown."}
+        </p>
+      )}
     </section>
   );
 }

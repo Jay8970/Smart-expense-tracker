@@ -93,6 +93,7 @@ Backend: http://localhost:5000/api/health
 - `DELETE /api/goals/:id`
 - `GET /api/analytics`
 - `GET /api/suggestions`
+- `GET /api/exchange-rate`
 
 ## Important Calculations
 
@@ -142,7 +143,7 @@ The app uses condition-based rules, such as:
 
 ## Notes
 
-The app uses the latest available CAD/INR reference rate for analytics, with a fallback saved rate if the exchange-rate service is temporarily unavailable.
+The app uses the latest available CAD/INR reference rate for analytics, with a persisted saved rate in MongoDB if the exchange-rate service is temporarily unavailable.
 
 Frankfurter provides daily reference rates, so the conversion is current by day rather than live tick-by-tick forex pricing.
 
