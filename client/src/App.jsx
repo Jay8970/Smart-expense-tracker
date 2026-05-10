@@ -55,6 +55,7 @@ export default function App() {
   const storedAuth = getStoredAuth();
   const [auth, setAuth] = useState(() => storedAuth);
   const [page, setPage] = useState(() => (storedAuth?.token ? "Dashboard" : "Home"));
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [goals, setGoals] = useState([]);
   const [budgets, setBudgets] = useState([]);
@@ -145,6 +146,10 @@ export default function App() {
     document.body.classList.toggle("dark-mode", darkMode);
     localStorage.setItem("smart-expense-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [page, auth?.token]);
 
   function handleAuth(nextAuth) {
     storeAuth(nextAuth);
@@ -485,17 +490,30 @@ export default function App() {
             <span>Tracker</span>
           </span>
         </strong>
-        <div>
-          {(auth?.token ? privatePages : publicPages).map((item) => (
-            <button
-              className={page === item ? "nav-active" : "ghost"}
-              key={item}
-              type="button"
-              onClick={() => setPage(item)}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="nav-actions">
+          <button
+            aria-expanded={mobileMenuOpen}
+            aria-label="Open navigation menu"
+            className="mobile-menu-toggle"
+            type="button"
+            onClick={() => setMobileMenuOpen((current) => !current)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className={`nav-links ${mobileMenuOpen ? "nav-links-open" : ""}`}>
+            {(auth?.token ? privatePages : publicPages).map((item) => (
+              <button
+                className={page === item ? "nav-active" : "ghost"}
+                key={item}
+                type="button"
+                onClick={() => setPage(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
       </nav>
 

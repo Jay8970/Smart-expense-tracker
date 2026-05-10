@@ -61,15 +61,42 @@ body.dark-mode .app-footer {
   z-index: 5;
 }
 
-.top-nav div {
+.nav-actions,
+.nav-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
 }
 
+.nav-actions {
+  align-items: center;
+  position: relative;
+}
+
 .top-nav button {
   padding: 8px 10px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  background: #eef4f0;
+  color: #17211d;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 8px;
+}
+
+.mobile-menu-toggle span {
+  background: currentColor;
+  border-radius: 999px;
+  display: block;
+  height: 2px;
+  width: 18px;
 }
 
 .brand-mark {
@@ -1235,13 +1262,41 @@ body.dark-mode .upload-button {
   }
 
   .top-nav {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
     position: static;
   }
 
-  .top-nav div {
-    justify-content: flex-start;
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 10;
+    width: min(260px, calc(100vw - 36px));
+    background: #ffffff;
+    border: 1px solid #dfe5dc;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(23, 33, 29, 0.12);
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links.nav-links-open {
+    display: flex;
+  }
+
+  .nav-links button {
+    text-align: left;
+    width: 100%;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
   }
 
   .budget-row {
@@ -1261,6 +1316,11 @@ body.dark-mode .upload-button {
 
   .preview-row {
     grid-template-columns: 1fr;
+  }
+
+  body.dark-mode .nav-links {
+    background: #1f2937;
+    border-color: #374151;
   }
 }
 
