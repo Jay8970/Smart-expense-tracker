@@ -3,6 +3,7 @@ import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
 import { Goal } from "../models/Goal.js";
 import { Transaction } from "../models/Transaction.js";
+import { getExchangeRates } from "../utils/currency.js";
 import { generateSuggestions } from "../utils/suggestionEngine.js";
 
 const router = express.Router();
@@ -16,6 +17,7 @@ function monthId(date) {
 
 router.get("/", async (req, res, next) => {
   try {
+    const exchangeRates = await getExchangeRates();
     const [transactions, futurePlans, budgets] = await Promise.all([
       Transaction.find({ user: req.user._id }),
       Goal.find({ user: req.user._id }),
@@ -32,7 +34,7 @@ router.get("/", async (req, res, next) => {
       return acc;
     }, {});
 
-    const suggestions = generateSuggestions(expenses, income, futurePlans);
+    const suggestions = generateSuggestions(expenses, income, futurePlans, exchangeRates);
 
     for (const budget of budgets) {
       const usedAmount = nativeCategoryTotals[`${budget.category}:${budget.currency}`] || 0;

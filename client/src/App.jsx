@@ -36,8 +36,8 @@ const emptyAnalytics = {
     budgetUsage: []
   },
   expensesByCategory: [],
-  expenseByCurrency: [],
-  monthlyTrend: []
+  monthlyTrend: [],
+  exchangeRate: null
 };
 
 const publicPages = ["Home", "Login / Register", "About"];

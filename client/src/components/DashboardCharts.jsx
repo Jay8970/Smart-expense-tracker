@@ -17,7 +17,6 @@ import {
 const colors = ["#0f766e", "#dc2626", "#2563eb", "#ca8a04", "#4f46e5", "#16a34a"];
 
 export default function DashboardCharts({ analytics, variant = "full" }) {
-  const expenseByCurrency = analytics.expenseByCurrency || [];
   const showFullReport = variant === "full";
   const hasCategoryData = (analytics.expensesByCategory || []).length > 0;
   const hasMonthlyData = (analytics.monthlyTrend || []).length > 0;
@@ -113,22 +112,6 @@ export default function DashboardCharts({ analytics, variant = "full" }) {
         </ResponsiveContainer>
       </article>}
 
-      {showFullReport && <article className="panel chart-panel">
-        <div className="section-heading">
-          <p>Currency split</p>
-          <h2>INR vs CAD expenses</h2>
-        </div>
-        <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={expenseByCurrency}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="currency" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="amount" name="Expense amount" fill="#2563eb" radius={[6, 6, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
-      </article>}
     </section>
   );
 }

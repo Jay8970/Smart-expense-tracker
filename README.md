@@ -142,12 +142,11 @@ The app uses condition-based rules, such as:
 
 ## Notes
 
-The app uses simple fixed conversion rates for analytics:
+The app uses the latest available CAD/INR reference rate for analytics, with a fallback saved rate if the exchange-rate service is temporarily unavailable.
 
-- `1 CAD = 60 INR`
-- `1 INR = 0.0167 CAD`
+Frankfurter provides daily reference rates, so the conversion is current by day rather than live tick-by-tick forex pricing.
 
-For a production project, replace this with a live exchange-rate API and keep `JWT_SECRET` private.
+Keep `JWT_SECRET` private.
 
 ## Data Protection
 

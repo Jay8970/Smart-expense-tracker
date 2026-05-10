@@ -3,7 +3,7 @@ import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
 import { Goal } from "../models/Goal.js";
 import { Transaction } from "../models/Transaction.js";
-import { toCad } from "../utils/currency.js";
+import { getExchangeRates, toCad } from "../utils/currency.js";
 
 const router = express.Router();
 
@@ -30,6 +30,7 @@ function emptyCurrencyTotals() {
 
 router.get("/", async (req, res, next) => {
   try {
+    const exchangeRates = await getExchangeRates();
     const [transactions, goals, budgets] = await Promise.all([
       Transaction.find({ user: req.user._id }),
       Goal.find({ user: req.user._id }),
@@ -70,13 +71,13 @@ router.get("/", async (req, res, next) => {
 
     for (const goal of goals) {
       futurePlannedByCurrency[goal.currency] += goal.targetAmount;
-      savedCad += toCad(goal.savedAmount, goal.currency);
-      plannedCad += toCad(goal.targetAmount, goal.currency);
+      savedCad += toCad(goal.savedAmount, goal.currency, exchangeRates);
+      plannedCad += toCad(goal.targetAmount, goal.currency, exchangeRates);
     }
 
     const summary = transactions.reduce(
       (acc, item) => {
-        const amountCad = toCad(item.amount, item.currency);
+        const amountCad = toCad(item.amount, item.currency, exchangeRates);
         if (item.type === "income") acc.incomeCad += amountCad;
         if (item.type === "expense") acc.expenseCad += amountCad;
         acc.balanceCad = acc.incomeCad - acc.expenseCad;
@@ -91,7 +92,7 @@ router.get("/", async (req, res, next) => {
         .reduce((acc, item) => {
           const key = item.category;
           acc[key] ||= { category: key, amountCad: 0 };
-          acc[key].amountCad += toCad(item.amount, item.currency);
+          acc[key].amountCad += toCad(item.amount, item.currency, exchangeRates);
           return acc;
         }, {})
     ).sort((a, b) => b.amountCad - a.amountCad);
@@ -108,7 +109,8 @@ router.get("/", async (req, res, next) => {
         };
         acc[key][item.type === "income" ? "incomeCad" : "expenseCad"] += toCad(
           item.amount,
-          item.currency
+          item.currency,
+          exchangeRates
         );
         if (item.type === "expense") {
           acc[key].expenseOriginal += item.amount;
@@ -116,11 +118,6 @@ router.get("/", async (req, res, next) => {
         return acc;
       }, {})
     ).sort((a, b) => a.monthSort.localeCompare(b.monthSort));
-
-    const expenseByCurrency = [
-      { currency: "CAD", amount: summaryByCurrency.CAD.expense },
-      { currency: "INR", amount: summaryByCurrency.INR.expense }
-    ];
 
     const topExpenseCategory = expensesByCategory[0]?.category || "No expenses yet";
     const savingsGoalProgress = plannedCad > 0 ? Math.round((savedCad / plannedCad) * 100) : 0;
@@ -168,9 +165,14 @@ router.get("/", async (req, res, next) => {
     res.json({
       summary,
       summaryByCurrency,
+      exchangeRate: {
+        base: "CAD",
+        inrPerCad: exchangeRates.rates.INR,
+        fetchedAt: exchangeRates.fetchedAt,
+        source: exchangeRates.source
+      },
       dashboard,
       expensesByCategory,
-      expenseByCurrency,
       monthlyTrend
     });
   } catch (error) {

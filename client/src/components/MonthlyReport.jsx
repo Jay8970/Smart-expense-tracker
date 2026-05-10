@@ -2,6 +2,7 @@ import { formatMoney } from "../utils/api.js";
 
 export default function MonthlyReport({ analytics }) {
   const dashboard = analytics.dashboard || {};
+  const exchangeRate = analytics.exchangeRate;
   const previous = analytics.monthlyTrend?.at(-2);
   const current = analytics.monthlyTrend?.at(-1);
   const currentExpense = current?.expenseCad || 0;
@@ -30,6 +31,14 @@ export default function MonthlyReport({ analytics }) {
         <article>
           <strong>Change from last month</strong>
           <span>{previousExpense > 0 ? `${change >= 0 ? "+" : ""}${change}%` : "Not enough data"}</span>
+        </article>
+        <article>
+          <strong>Latest exchange rate</strong>
+          <span>
+            {exchangeRate?.inrPerCad
+              ? `1 CAD = ${exchangeRate.inrPerCad.toFixed(2)} INR`
+              : "Using saved conversion"}
+          </span>
         </article>
       </div>
     </section>

@@ -15,17 +15,23 @@ function monthlySavingNeeded(plan) {
   return Math.ceil(remainingAmount / safeMonths);
 }
 
-export function generateSuggestions(expenses, income, futurePlans) {
+export function generateSuggestions(expenses, income, futurePlans, exchangeRates) {
   const suggestions = [];
   const now = new Date();
   const currentMonth = monthId(now);
   const previousMonth = monthId(new Date(now.getFullYear(), now.getMonth() - 1, 1));
   const currentMonthExpenses = expenses.filter((expense) => monthId(expense.date) === currentMonth);
   const previousMonthExpenses = expenses.filter((expense) => monthId(expense.date) === previousMonth);
-  const totalIncomeCad = income.reduce((total, item) => total + toCad(item.amount, item.currency), 0);
-  const totalExpenseCad = expenses.reduce((total, item) => total + toCad(item.amount, item.currency), 0);
+  const totalIncomeCad = income.reduce(
+    (total, item) => total + toCad(item.amount, item.currency, exchangeRates),
+    0
+  );
+  const totalExpenseCad = expenses.reduce(
+    (total, item) => total + toCad(item.amount, item.currency, exchangeRates),
+    0
+  );
   const currentMonthExpenseCad = currentMonthExpenses.reduce(
-    (total, item) => total + toCad(item.amount, item.currency),
+    (total, item) => total + toCad(item.amount, item.currency, exchangeRates),
     0
   );
 
@@ -38,12 +44,14 @@ export function generateSuggestions(expenses, income, futurePlans) {
   }
 
   const currentCategoryTotals = currentMonthExpenses.reduce((acc, item) => {
-    acc[item.category] = (acc[item.category] || 0) + toCad(item.amount, item.currency);
+    acc[item.category] =
+      (acc[item.category] || 0) + toCad(item.amount, item.currency, exchangeRates);
     return acc;
   }, {});
 
   const previousCategoryTotals = previousMonthExpenses.reduce((acc, item) => {
-    acc[item.category] = (acc[item.category] || 0) + toCad(item.amount, item.currency);
+    acc[item.category] =
+      (acc[item.category] || 0) + toCad(item.amount, item.currency, exchangeRates);
     return acc;
   }, {});
 
@@ -69,7 +77,9 @@ export function generateSuggestions(expenses, income, futurePlans) {
     }
   }
 
-  const smallExpenses = currentMonthExpenses.filter((item) => toCad(item.amount, item.currency) <= 10);
+  const smallExpenses = currentMonthExpenses.filter(
+    (item) => toCad(item.amount, item.currency, exchangeRates) <= 10
+  );
   if (smallExpenses.length >= 5) {
     suggestions.push("Frequent small expenses can add up. Check daily snacks, coffee, or impulse purchases.");
   }
