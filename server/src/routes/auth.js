@@ -1,7 +1,7 @@
 import express from "express";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { protect } from "../middleware/auth.js";
+import { clearUserCache, primeUserCache, protect } from "../middleware/auth.js";
 import { User } from "../models/User.js";
 
 const router = express.Router();
@@ -43,6 +43,7 @@ router.post("/register", async (req, res, next) => {
     }
 
     const user = await User.create({ name, email, password });
+    primeUserCache(user);
     res.status(201).json(toAuthResponse(user));
   } catch (error) {
     next(error);
@@ -58,6 +59,7 @@ router.post("/login", async (req, res, next) => {
       return res.status(401).json({ message: "Invalid email or password." });
     }
 
+    primeUserCache(user);
     res.json(toAuthResponse(user));
   } catch (error) {
     next(error);
@@ -80,15 +82,23 @@ router.get("/me", protect, (req, res) => {
 
 router.put("/me", protect, async (req, res, next) => {
   try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      clearUserCache(req.user._id);
+      return res.status(401).json({ message: "User account was not found." });
+    }
+
     const allowedFields = ["name", "email", "phone", "profilePicture", "defaultCurrency", "monthlySavingsGoal"];
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
-        req.user[field] = req.body[field];
+        user[field] = req.body[field];
       }
     }
 
-    await req.user.save();
-    res.json(toAuthResponse(req.user));
+    await user.save();
+    primeUserCache(user);
+    res.json(toAuthResponse(user));
   } catch (error) {
     next(error);
   }
@@ -113,6 +123,7 @@ router.put("/password", protect, async (req, res, next) => {
 
     user.password = newPassword;
     await user.save();
+    primeUserCache(user);
     res.json({ message: "Password updated successfully." });
   } catch (error) {
     next(error);
@@ -161,6 +172,7 @@ router.post("/reset-password", async (req, res, next) => {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save();
+    primeUserCache(user);
 
     res.json(toAuthResponse(user));
   } catch (error) {
