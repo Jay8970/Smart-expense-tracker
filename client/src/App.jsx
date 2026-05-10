@@ -5,6 +5,7 @@ import DashboardCharts from "./components/DashboardCharts.jsx";
 import GoalForm from "./components/GoalForm.jsx";
 import GoalList from "./components/GoalList.jsx";
 import IncomeForm from "./components/IncomeForm.jsx";
+import ImportDataPanel from "./components/ImportDataPanel.jsx";
 import MonthlyReport from "./components/MonthlyReport.jsx";
 import ProfileSettings from "./components/ProfileSettings.jsx";
 import PublicAbout from "./components/PublicAbout.jsx";
@@ -406,6 +407,7 @@ export default function App() {
               <button className="ghost" type="button" onClick={() => window.print()}>Print / Save PDF</button>
             </div>
           </section>
+          <ImportDataPanel api={api} onImported={loadData} onToast={showToast} />
           <DashboardCharts
             analytics={analytics}
             displayCurrency={auth?.user?.defaultCurrency || "CAD"}
@@ -448,6 +450,7 @@ export default function App() {
             <button className="ghost" type="button" onClick={removeDemoData}>Remove sample data</button>
           </div>
         </section>
+        <ImportDataPanel api={api} onImported={loadData} onToast={showToast} />
         <BudgetAlerts warnings={analytics.dashboard?.budgetWarnings || []} />
 
         {!hasData && (

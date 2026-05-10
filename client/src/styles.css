@@ -852,6 +852,35 @@ body.dark-mode .currency-badge.inr {
   margin-bottom: 16px;
 }
 
+.import-panel {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.import-summary {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.import-summary article {
+  border: 1px solid #e2e8e3;
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+}
+
+.import-summary strong {
+  font-size: 1.4rem;
+}
+
+.import-summary span {
+  color: #536059;
+  font-weight: 800;
+}
+
 .auth-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.55fr);
@@ -1203,6 +1232,7 @@ body.dark-mode th {
 
 body.dark-mode .goal-card,
 body.dark-mode .budget-row,
+body.dark-mode .import-summary article,
 body.dark-mode .profile-summary-grid article,
 body.dark-mode .report-list article,
 body.dark-mode .recent-row,
@@ -1300,6 +1330,10 @@ body.dark-mode .upload-button {
   }
 
   .budget-row {
+    grid-template-columns: 1fr;
+  }
+
+  .import-summary {
     grid-template-columns: 1fr;
   }
 

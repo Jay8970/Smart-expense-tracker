@@ -19,6 +19,7 @@ A MERN stack web application for tracking income, expenses, financial goals, ana
 - Expense history filters for date range, currency, category, and search
 - Edit and delete expense records from history
 - CSV export and print/save-as-PDF report support
+- CSV and Excel spreadsheet import for transactions, goals, and budgets
 - Dark mode toggle
 - Monthly category budgets with alerts when spending crosses 80%
 - Recurring expense marking for weekly, monthly, and yearly expenses
@@ -94,6 +95,7 @@ Backend: http://localhost:5000/api/health
 - `GET /api/analytics`
 - `GET /api/suggestions`
 - `GET /api/exchange-rate`
+- `POST /api/import`
 
 ## Important Calculations
 
@@ -148,6 +150,20 @@ The app uses the latest available CAD/INR reference rate for analytics, with a p
 Frankfurter provides daily reference rates, so the conversion is current by day rather than live tick-by-tick forex pricing.
 
 Keep `JWT_SECRET` private.
+
+## Spreadsheet Import
+
+Users can import `.csv`, `.xlsx`, or `.xls` files from the website instead of entering records manually.
+
+- CSV files are treated as transaction imports.
+- Excel workbooks can include sheets such as `Transactions`, `Goals`, and `Budgets`.
+- If sheet names are different, the app also tries to detect the data type from the column headers.
+
+Recommended columns:
+
+- Transactions: `type`, `title`, `category`, `amount`, `currency`, `date`, `paymentMethod`, `recurring`, `recurrenceFrequency`, `note`
+- Goals: `title`, `category`, `targetAmount`, `savedAmount`, `currency`, `targetDate`, `priority`, `status`
+- Budgets: `category`, `currency`, `monthlyLimit`
 
 ## Data Protection
 

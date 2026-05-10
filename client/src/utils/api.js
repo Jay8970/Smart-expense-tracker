@@ -71,7 +71,8 @@ export const api = {
   deleteBudget: (id) => request(`/budgets/${id}`, { method: "DELETE" }),
   getAnalytics: () => request("/analytics"),
   getSuggestions: () => request("/suggestions"),
-  getExchangeRate: () => request("/exchange-rate")
+  getExchangeRate: () => request("/exchange-rate"),
+  importData: (payload) => request("/import", { method: "POST", body: JSON.stringify(payload) })
 };
 
 export function formatMoney(amount, currency = "CAD") {

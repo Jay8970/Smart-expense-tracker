@@ -8,6 +8,7 @@ import authRouter from "./routes/auth.js";
 import budgetsRouter from "./routes/budgets.js";
 import exchangeRateRouter from "./routes/exchangeRate.js";
 import goalsRouter from "./routes/goals.js";
+import importsRouter from "./routes/imports.js";
 import suggestionsRouter from "./routes/suggestions.js";
 import transactionsRouter from "./routes/transactions.js";
 import { isUsingDedicatedEncryptionKey } from "./utils/fieldEncryption.js";
@@ -45,6 +46,7 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/exchange-rate", exchangeRateRouter);
+app.use("/api/import", importsRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/transactions", transactionsRouter);
 app.use("/api/goals", goalsRouter);
