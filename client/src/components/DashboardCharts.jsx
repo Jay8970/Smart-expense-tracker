@@ -16,6 +16,7 @@ import {
 import { convertFromBase, formatMoney, getCurrencyLabel } from "../utils/api.js";
 
 const colors = ["#0f766e", "#dc2626", "#2563eb", "#ca8a04", "#4f46e5", "#16a34a"];
+const formatAxisValue = (value) => Number(value || 0).toFixed(2);
 
 export default function DashboardCharts({
   analytics,
@@ -79,7 +80,7 @@ export default function DashboardCharts({
             <BarChart data={convertedMonthlyTrend}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis />
+              <YAxis tickFormatter={formatAxisValue} />
               <Tooltip formatter={(value) => `${formatMoney(value, displayCurrency)} estimated`} />
               <Legend />
               <Bar dataKey="expenseDisplay" name="Monthly expenses" fill="#dc2626" radius={[6, 6, 0, 0]} />
@@ -101,7 +102,7 @@ export default function DashboardCharts({
               <LineChart data={convertedMonthlyTrend}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis />
+                <YAxis tickFormatter={formatAxisValue} />
                 <Tooltip formatter={(value) => `${formatMoney(value, displayCurrency)} estimated`} />
                 <Legend />
                 <Line
@@ -130,7 +131,7 @@ export default function DashboardCharts({
             <BarChart data={convertedMonthlyTrend}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis />
+              <YAxis tickFormatter={formatAxisValue} />
               <Tooltip formatter={(value) => formatMoney(value, displayCurrency)} />
               <Legend />
               <Bar dataKey="incomeDisplay" name="Income" fill="#0f766e" radius={[6, 6, 0, 0]} />

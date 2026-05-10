@@ -24,6 +24,10 @@ let cachedRates = {
   cacheExpiresAt: 0
 };
 
+export function roundToTwo(value) {
+  return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
+}
+
 function normalizeRates(input, overrides = {}) {
   const inputRates =
     input?.rates instanceof Map ? Object.fromEntries(input.rates) : input?.rates || {};
@@ -107,7 +111,7 @@ async function fetchLatestRates(base = DEFAULT_BASE, quotes = DEFAULT_QUOTES) {
 
       return normalizeRates({
         base,
-        rates,
+        rates: Object.fromEntries(Object.entries(rates).map(([currency, value]) => [currency, roundToTwo(value)])),
         fetchedAt,
         source: "frankfurter"
       });
@@ -195,9 +199,9 @@ export function convertAmount(amount, fromCurrency, toCurrency, exchangeRates = 
   const fromBaseAmount =
     fromCurrency === base ? numericAmount : numericAmount / (Number(rates[fromCurrency]) || 1);
 
-  return toCurrency === base
+  return roundToTwo(toCurrency === base
     ? fromBaseAmount
-    : fromBaseAmount * (Number(rates[toCurrency]) || 1);
+    : fromBaseAmount * (Number(rates[toCurrency]) || 1));
 }
 
 export function toCad(amount, currency, exchangeRates = FALLBACK_RATES) {
@@ -207,7 +211,9 @@ export function toCad(amount, currency, exchangeRates = FALLBACK_RATES) {
 export function formatExchangeRate(rateInfo) {
   return {
     base: rateInfo.base,
-    rates: rateInfo.rates,
+    rates: Object.fromEntries(
+      Object.entries(rateInfo.rates || {}).map(([currency, value]) => [currency, roundToTwo(value)])
+    ),
     fetchedAt: rateInfo.fetchedAt,
     source: rateInfo.source,
     stale: Boolean(rateInfo.stale),

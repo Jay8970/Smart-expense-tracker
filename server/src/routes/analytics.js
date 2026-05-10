@@ -3,7 +3,7 @@ import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
 import { Goal } from "../models/Goal.js";
 import { Transaction } from "../models/Transaction.js";
-import { formatExchangeRate, getExchangeRates, toCad } from "../utils/currency.js";
+import { formatExchangeRate, getExchangeRates, roundToTwo, toCad } from "../utils/currency.js";
 
 const router = express.Router();
 
@@ -85,6 +85,9 @@ router.get("/", async (req, res, next) => {
       },
       { incomeCad: 0, expenseCad: 0, balanceCad: 0 }
     );
+    summary.incomeCad = roundToTwo(summary.incomeCad);
+    summary.expenseCad = roundToTwo(summary.expenseCad);
+    summary.balanceCad = roundToTwo(summary.balanceCad);
 
     const expensesByCategory = Object.values(
       transactions
@@ -95,7 +98,9 @@ router.get("/", async (req, res, next) => {
           acc[key].amountCad += toCad(item.amount, item.currency, exchangeRates);
           return acc;
         }, {})
-    ).sort((a, b) => b.amountCad - a.amountCad);
+    )
+      .map((item) => ({ ...item, amountCad: roundToTwo(item.amountCad) }))
+      .sort((a, b) => b.amountCad - a.amountCad);
 
     const monthlyTrend = Object.values(
       transactions.reduce((acc, item) => {
@@ -117,7 +122,14 @@ router.get("/", async (req, res, next) => {
         }
         return acc;
       }, {})
-    ).sort((a, b) => a.monthSort.localeCompare(b.monthSort));
+    )
+      .map((item) => ({
+        ...item,
+        incomeCad: roundToTwo(item.incomeCad),
+        expenseCad: roundToTwo(item.expenseCad),
+        expenseOriginal: roundToTwo(item.expenseOriginal)
+      }))
+      .sort((a, b) => a.monthSort.localeCompare(b.monthSort));
 
     const topExpenseCategory = expensesByCategory[0]?.category || "No expenses yet";
     const savingsGoalProgress = plannedCad > 0 ? Math.round((savedCad / plannedCad) * 100) : 0;
@@ -129,8 +141,8 @@ router.get("/", async (req, res, next) => {
           id: budget._id,
           category: budget.category,
           currency: budget.currency,
-          monthlyLimit: budget.monthlyLimit,
-          usedAmount,
+          monthlyLimit: roundToTwo(budget.monthlyLimit),
+          usedAmount: roundToTwo(usedAmount),
           usedPercent,
           message: `You already used ${usedPercent}% of your ${budget.category} budget this month.`
         };
@@ -143,19 +155,25 @@ router.get("/", async (req, res, next) => {
 
     const dashboard = {
       totalIncome: {
-        CAD: summaryByCurrency.CAD.income,
-        INR: summaryByCurrency.INR.income
+        CAD: roundToTwo(summaryByCurrency.CAD.income),
+        INR: roundToTwo(summaryByCurrency.INR.income)
       },
       totalExpense: {
-        CAD: summaryByCurrency.CAD.expense,
-        INR: summaryByCurrency.INR.expense
+        CAD: roundToTwo(summaryByCurrency.CAD.expense),
+        INR: roundToTwo(summaryByCurrency.INR.expense)
       },
       remainingBalance: {
-        CAD: summaryByCurrency.CAD.balance,
-        INR: summaryByCurrency.INR.balance
+        CAD: roundToTwo(summaryByCurrency.CAD.balance),
+        INR: roundToTwo(summaryByCurrency.INR.balance)
       },
-      futurePlanned: futurePlannedByCurrency,
-      monthlySpending: monthlySpendingByCurrency,
+      futurePlanned: {
+        CAD: roundToTwo(futurePlannedByCurrency.CAD),
+        INR: roundToTwo(futurePlannedByCurrency.INR)
+      },
+      monthlySpending: {
+        CAD: roundToTwo(monthlySpendingByCurrency.CAD),
+        INR: roundToTwo(monthlySpendingByCurrency.INR)
+      },
       topExpenseCategory,
       savingsGoalProgress,
       budgetWarnings,

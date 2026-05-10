@@ -107,5 +107,5 @@ export function convertFromBase(amount, targetCurrency, exchangeRate) {
     return numericAmount;
   }
 
-  return numericAmount * (Number(rates[targetCurrency]) || 1);
+  return Math.round((numericAmount * (Number(rates[targetCurrency]) || 1) + Number.EPSILON) * 100) / 100;
 }
