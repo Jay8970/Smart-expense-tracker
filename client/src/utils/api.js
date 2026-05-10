@@ -78,7 +78,8 @@ export function formatMoney(amount, currency = "CAD") {
   return new Intl.NumberFormat(currencyDetails[currency]?.locale || "en-CA", {
     style: "currency",
     currency,
-    maximumFractionDigits: 0
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(amount || 0);
 }
 
