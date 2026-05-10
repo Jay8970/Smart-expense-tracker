@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encryptedStringField } from "../utils/fieldEncryption.js";
 
 const transactionSchema = new mongoose.Schema(
   {
@@ -14,9 +15,7 @@ const transactionSchema = new mongoose.Schema(
       required: true
     },
     title: {
-      type: String,
-      trim: true,
-      required: true
+      ...encryptedStringField({ required: true, trim: true })
     },
     category: {
       type: String,
@@ -39,9 +38,7 @@ const transactionSchema = new mongoose.Schema(
       default: Date.now
     },
     paymentMethod: {
-      type: String,
-      trim: true,
-      default: "Cash"
+      ...encryptedStringField({ default: "Cash", trim: true })
     },
     recurring: {
       type: Boolean,
@@ -57,12 +54,10 @@ const transactionSchema = new mongoose.Schema(
       default: false
     },
     note: {
-      type: String,
-      trim: true,
-      default: ""
+      ...encryptedStringField({ default: "", trim: true })
     }
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { getters: true }, toObject: { getters: true } }
 );
 
 export const Transaction = mongoose.model("Transaction", transactionSchema);

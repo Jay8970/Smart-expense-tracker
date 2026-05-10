@@ -64,6 +64,7 @@ PORT=5000
 CLIENT_URL=http://localhost:5173
 CLIENT_URLS=http://localhost:5173
 JWT_SECRET=change-this-secret-before-deployment
+DATA_ENCRYPTION_KEY=add-a-separate-long-random-secret-for-field-encryption
 ```
 
 4. Start MongoDB locally, then run the app:
@@ -148,6 +149,13 @@ The app uses simple fixed conversion rates for analytics:
 
 For a production project, replace this with a live exchange-rate API and keep `JWT_SECRET` private.
 
+## Data Protection
+
+- Sensitive text fields are encrypted before they are written to MongoDB.
+- This is server-side encryption at rest, not end-to-end encryption.
+- For the strongest setup, set a dedicated `DATA_ENCRYPTION_KEY` in every environment.
+- Existing plaintext records still load normally. New or updated sensitive records will be stored encrypted.
+
 ## Deployment Readiness
 
 Frontend deployment:
@@ -164,6 +172,7 @@ Backend deployment:
   - `PORT`
   - `CLIENT_URLS`, for example `https://your-vercel-app.vercel.app,http://localhost:5173`
   - `JWT_SECRET`
+  - `DATA_ENCRYPTION_KEY`
 - In Render, use `server` as the root directory, `npm install` as the build command, and `npm start` as the start command.
 - If you use only one frontend URL, `CLIENT_URL` still works. Use `CLIENT_URLS` when you want to allow local development, your production Vercel domain, and Vercel preview domains you trust.
 

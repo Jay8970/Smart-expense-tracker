@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encryptedStringField } from "../utils/fieldEncryption.js";
 
 const goalSchema = new mongoose.Schema(
   {
@@ -9,9 +10,7 @@ const goalSchema = new mongoose.Schema(
       index: true
     },
     title: {
-      type: String,
-      trim: true,
-      required: true
+      ...encryptedStringField({ required: true, trim: true })
     },
     targetAmount: {
       type: Number,
@@ -68,7 +67,7 @@ goalSchema.virtual("monthlySavingsNeeded").get(function getMonthlySavingsNeeded(
   return Math.ceil(this.remainingAmount / safeMonths);
 });
 
-goalSchema.set("toJSON", { virtuals: true });
-goalSchema.set("toObject", { virtuals: true });
+goalSchema.set("toJSON", { virtuals: true, getters: true });
+goalSchema.set("toObject", { virtuals: true, getters: true });
 
 export const Goal = mongoose.model("Goal", goalSchema);

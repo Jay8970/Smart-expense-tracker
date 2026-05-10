@@ -1,13 +1,12 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import mongoose from "mongoose";
+import { encryptedStringField } from "../utils/fieldEncryption.js";
 
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
-      trim: true,
-      required: true
+      ...encryptedStringField({ required: true, trim: true })
     },
     email: {
       type: String,
@@ -17,13 +16,10 @@ const userSchema = new mongoose.Schema(
       required: true
     },
     phone: {
-      type: String,
-      trim: true,
-      default: ""
+      ...encryptedStringField({ default: "", trim: true })
     },
     profilePicture: {
-      type: String,
-      default: ""
+      ...encryptedStringField({ default: "" })
     },
     defaultCurrency: {
       type: String,
@@ -50,7 +46,7 @@ const userSchema = new mongoose.Schema(
       select: false
     }
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { getters: true }, toObject: { getters: true } }
 );
 
 userSchema.pre("save", async function hashPassword(next) {

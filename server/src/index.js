@@ -9,8 +9,13 @@ import budgetsRouter from "./routes/budgets.js";
 import goalsRouter from "./routes/goals.js";
 import suggestionsRouter from "./routes/suggestions.js";
 import transactionsRouter from "./routes/transactions.js";
+import { isUsingDedicatedEncryptionKey } from "./utils/fieldEncryption.js";
 
 dotenv.config();
+
+if (!isUsingDedicatedEncryptionKey()) {
+  console.warn("DATA_ENCRYPTION_KEY is not set. Falling back to JWT_SECRET for at-rest field encryption.");
+}
 
 const app = express();
 const port = process.env.PORT || 5000;
