@@ -52,8 +52,9 @@ const privatePages = [
 ];
 
 export default function App() {
-  const [auth, setAuth] = useState(() => getStoredAuth());
-  const [page, setPage] = useState(() => (getStoredAuth()?.token ? "Dashboard" : "Home"));
+  const storedAuth = getStoredAuth();
+  const [auth, setAuth] = useState(() => storedAuth);
+  const [page, setPage] = useState(() => (storedAuth?.token ? "Dashboard" : "Home"));
   const [transactions, setTransactions] = useState([]);
   const [goals, setGoals] = useState([]);
   const [budgets, setBudgets] = useState([]);
@@ -61,7 +62,7 @@ export default function App() {
   const [suggestions, setSuggestions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [editingGoal, setEditingGoal] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => Boolean(storedAuth?.token));
   const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("smart-expense-theme") === "dark");
   const [showWelcome, setShowWelcome] = useState(false);
@@ -80,13 +81,13 @@ export default function App() {
 
     setError("");
     try {
-      const [transactionData, goalData, analyticsData, suggestionData] = await Promise.all([
+      const [transactionData, goalData, analyticsData, suggestionData, budgetData] = await Promise.all([
         api.getTransactions(),
         api.getGoals(),
         api.getAnalytics(),
-        api.getSuggestions()
+        api.getSuggestions(),
+        api.getBudgets()
       ]);
-      const budgetData = await api.getBudgets();
       setTransactions(transactionData);
       setGoals(goalData);
       setBudgets(budgetData);
@@ -105,7 +106,7 @@ export default function App() {
 
   useEffect(() => {
     async function refreshProfile() {
-      if (!auth?.token) return;
+      if (!auth?.token || auth.user) return;
       try {
         const profile = await api.getProfile();
         const refreshedAuth = { ...auth, user: profile.user };
@@ -131,7 +132,6 @@ export default function App() {
     setAuth(nextAuth);
     setPage("Dashboard");
     setShowWelcome(true);
-    setLoading(true);
   }
 
   useEffect(() => {
