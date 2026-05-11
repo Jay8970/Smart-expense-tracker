@@ -20,10 +20,7 @@ export default function PublicHome({ onNavigate }) {
         <div className="public-hero-copy">
           <p className="eyebrow">Smart personal finance</p>
           <h2>Know where your money goes before the month is over.</h2>
-          <p>
-            Track expenses, income, budgets, future plans, and savings advice in one secure workspace built
-            for INR and CAD.
-          </p>
+          <p>Track expenses, budgets, and plans in one clean INR and CAD workspace.</p>
           <div className="actions">
             <button type="button" onClick={() => onNavigate("Login / Register")}>Login / Register</button>
             <button className="ghost" type="button" onClick={() => onNavigate("About")}>About project</button>
@@ -70,7 +67,7 @@ export default function PublicHome({ onNavigate }) {
         <div className="panel page-panel">
           <div className="section-heading">
             <p>What you can manage</p>
-            <h2>Everything your project needs for a strong demo</h2>
+            <h2>Everything you need in one place</h2>
           </div>
           <ul className="feature-list advanced">
             {features.map((feature) => (
@@ -83,10 +80,21 @@ export default function PublicHome({ onNavigate }) {
             <p>Standout feature</p>
             <h2>Money Saving Suggestions</h2>
           </div>
-          <p>
-            The backend suggestion engine checks food spending, entertainment increases, frequent small
-            purchases, budgets, and future plans to suggest better money decisions.
-          </p>
+          <p>Quick signals help users spot risky spending and smarter next moves at a glance.</p>
+          <div className="insight-tiles">
+            <article>
+              <strong>Food alerts</strong>
+              <span>Catch categories that rise too fast.</span>
+            </article>
+            <article>
+              <strong>Budget watch</strong>
+              <span>See when monthly limits get close.</span>
+            </article>
+            <article>
+              <strong>Goal pressure</strong>
+              <span>Know when future plans need higher saving.</span>
+            </article>
+          </div>
         </div>
       </section>
     </div>

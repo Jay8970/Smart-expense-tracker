@@ -16,7 +16,7 @@ import {
 import { convertFromBase, formatMoney, getCurrencyLabel } from "../utils/api.js";
 
 const colors = ["#0f766e", "#dc2626", "#2563eb", "#ca8a04", "#4f46e5", "#16a34a"];
-const formatAxisValue = (value) => Number(value || 0).toFixed(2);
+const formatAxisValue = (value, currency) => formatMoney(Number(value || 0), currency);
 const formatChartValue = (value) => Number(value || 0).toFixed(2);
 
 export default function DashboardCharts({
@@ -62,8 +62,8 @@ export default function DashboardCharts({
                   <Cell key={entry.category} fill={colors[index % colors.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value) => formatMoney(value, displayCurrency)} />
-              <Legend />
+              <Tooltip formatter={(value, _name, details) => [formatMoney(value, displayCurrency), details?.payload?.category || "Amount"]} />
+              <Legend wrapperStyle={{ fontSize: "1rem", fontWeight: 700, paddingTop: 12 }} />
             </PieChart>
           </ResponsiveContainer>
         ) : (
@@ -81,9 +81,9 @@ export default function DashboardCharts({
             <BarChart data={convertedMonthlyTrend}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis tickFormatter={formatAxisValue} />
-              <Tooltip formatter={(value) => `${formatMoney(value, displayCurrency)} estimated`} />
-              <Legend />
+              <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+              <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
+              <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
               <Bar dataKey="expenseDisplay" name="Monthly expenses" fill="#dc2626" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -103,9 +103,9 @@ export default function DashboardCharts({
               <LineChart data={convertedMonthlyTrend}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis tickFormatter={formatAxisValue} />
-                <Tooltip formatter={(value) => `${formatMoney(value, displayCurrency)} estimated`} />
-                <Legend />
+                <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+                <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
+                <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
                 <Line
                   type="monotone"
                   dataKey="expenseDisplay"
@@ -132,9 +132,9 @@ export default function DashboardCharts({
             <BarChart data={convertedMonthlyTrend}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis tickFormatter={formatAxisValue} />
-              <Tooltip formatter={(value) => formatMoney(value, displayCurrency)} />
-              <Legend />
+              <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+              <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
+              <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
               <Bar dataKey="incomeDisplay" name="Income" fill="#0f766e" radius={[6, 6, 0, 0]} />
               <Bar dataKey="expenseDisplay" name="Expenses" fill="#dc2626" radius={[6, 6, 0, 0]} />
             </BarChart>

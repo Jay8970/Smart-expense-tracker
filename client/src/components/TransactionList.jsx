@@ -74,39 +74,45 @@ export default function TransactionList({ transactions, onEdit, onDelete, onExpo
         </div>
       </div>
       <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category / source</th>
-              <th>Type</th>
-              <th>Payment</th>
-              <th>Recurring</th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredTransactions.map((item) => (
-              <tr key={item._id}>
-                <td>{item.title}</td>
-                <td><span className="category-label">{getCategoryIcon(item.category)} {item.category}</span></td>
-                <td>
-                  <span className={`pill ${item.type}`}>{item.type}</span>
-                </td>
-                <td>{item.type === "expense" ? item.paymentMethod || "Cash" : "-"}</td>
-                <td>{item.recurring ? item.recurrenceFrequency : "-"}</td>
-                <td>{formatMoney(item.amount, item.currency)}</td>
-                <td>{new Date(item.date).toLocaleDateString()}</td>
-                <td className="row-actions">
-                  <button className="mini" onClick={() => onEdit(item)}>Edit</button>
-                  <button className="mini danger" onClick={() => onDelete(item._id)}>Delete</button>
-                </td>
+        {filteredTransactions.length === 0 ? (
+          <div className="empty-state table-empty-state">
+            No expenses yet. Add your first one to start building your history.
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category / source</th>
+                <th>Type</th>
+                <th>Payment</th>
+                <th>Recurring</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredTransactions.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.title}</td>
+                  <td><span className="category-label">{getCategoryIcon(item.category)} {item.category}</span></td>
+                  <td>
+                    <span className={`pill ${item.type}`}>{item.type}</span>
+                  </td>
+                  <td>{item.type === "expense" ? item.paymentMethod || "Cash" : "-"}</td>
+                  <td>{item.recurring ? item.recurrenceFrequency : "-"}</td>
+                  <td>{formatMoney(item.amount, item.currency)}</td>
+                  <td>{new Date(item.date).toLocaleDateString()}</td>
+                  <td className="row-actions">
+                    <button className="mini" onClick={() => onEdit(item)}>Edit</button>
+                    <button className="mini danger" onClick={() => onDelete(item._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </section>
   );

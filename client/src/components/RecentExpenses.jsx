@@ -14,7 +14,7 @@ export default function RecentExpenses({ expenses, onViewAll }) {
         <button className="mini ghost" type="button" onClick={onViewAll}>View all</button>
       </div>
       <div className="recent-list">
-        {recentExpenses.length === 0 && <p className="muted">No expenses added yet.</p>}
+        {recentExpenses.length === 0 && <p className="muted">No expenses yet. Add your first one and it will appear here.</p>}
         {recentExpenses.map((expense) => (
           <article className="recent-row" key={expense._id}>
             <div>

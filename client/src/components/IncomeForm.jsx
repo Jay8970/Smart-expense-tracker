@@ -7,7 +7,9 @@ const initialState = {
   amount: "",
   currency: "CAD",
   category: "Salary",
-  date: new Date().toISOString().slice(0, 10)
+  date: new Date().toISOString().slice(0, 10),
+  recurring: false,
+  note: ""
 };
 
 export default function IncomeForm({ editingIncome, onCancel, onSubmit }) {
@@ -21,13 +23,18 @@ export default function IncomeForm({ editingIncome, onCancel, onSubmit }) {
         amount: editingIncome.amount,
         currency: editingIncome.currency,
         category: editingIncome.category,
-        date: editingIncome.date.slice(0, 10)
+        date: editingIncome.date.slice(0, 10),
+        recurring: Boolean(editingIncome.recurring),
+        note: editingIncome.note || ""
       });
+    } else {
+      setForm(initialState);
     }
   }, [editingIncome]);
 
   function updateField(event) {
-    setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
+    const { name, type, checked, value } = event.target;
+    setForm((current) => ({ ...current, [name]: type === "checkbox" ? checked : value }));
   }
 
   async function handleSubmit(event) {
@@ -49,7 +56,9 @@ export default function IncomeForm({ editingIncome, onCancel, onSubmit }) {
       type: "income",
       amount: Number(form.amount),
       paymentMethod: "",
-      note: ""
+      recurring: Boolean(form.recurring),
+      recurrenceFrequency: form.recurring ? "Monthly" : "None",
+      note: form.note.trim()
     });
     setForm(initialState);
   }
@@ -89,6 +98,14 @@ export default function IncomeForm({ editingIncome, onCancel, onSubmit }) {
         <label>
           Date
           <input name="date" type="date" value={form.date} onChange={updateField} required />
+        </label>
+        <label className="check-label">
+          <input name="recurring" type="checkbox" checked={form.recurring} onChange={updateField} />
+          Recurring income
+        </label>
+        <label className="full">
+          Note
+          <input name="note" value={form.note} onChange={updateField} placeholder="Optional details like client, month, or source" />
         </label>
         <div className="actions full">
           <button type="submit">{editingIncome ? "Save changes" : "Add income"}</button>

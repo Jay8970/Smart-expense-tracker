@@ -44,19 +44,19 @@ const emptyAnalytics = {
 const publicPages = ["Home", "Login / Register", "About"];
 const privatePages = [
   "Dashboard",
-  "Add Expense",
   "Expense History",
-  "Add Income",
   "Future Planning",
   "Reports",
   "Profile"
 ];
+const addPages = ["Add Expense", "Add Income"];
 
 export default function App() {
   const storedAuth = getStoredAuth();
   const [auth, setAuth] = useState(() => storedAuth);
   const [page, setPage] = useState(() => (storedAuth?.token ? "Dashboard" : "Home"));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [addMenuOpen, setAddMenuOpen] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [goals, setGoals] = useState([]);
   const [budgets, setBudgets] = useState([]);
@@ -150,6 +150,7 @@ export default function App() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setAddMenuOpen(false);
   }, [page, auth?.token]);
 
   function handleAuth(nextAuth) {
@@ -320,6 +321,16 @@ export default function App() {
     [transactions]
   );
 
+  function renderPrivatePageTitle(title, subtitle) {
+    return (
+      <section className="page-title-block">
+        <p className="eyebrow">Smart Expense Tracker</p>
+        <h1>{title}</h1>
+        {subtitle && <p className="page-title-copy">{subtitle}</p>}
+      </section>
+    );
+  }
+
   function renderPublicPage() {
     if (page === "Login / Register") {
       return (
@@ -353,50 +364,63 @@ export default function App() {
 
     if (page === "Add Expense") {
       return (
-        <TransactionForm
-          editingTransaction={editingTransaction?.type === "expense" ? editingTransaction : null}
-          onCancel={() => setEditingTransaction(null)}
-          onSubmit={saveTransaction}
-        />
+        <>
+          {renderPrivatePageTitle("Add Expense", "Record a new expense and keep your spending up to date.")}
+          <TransactionForm
+            editingTransaction={editingTransaction?.type === "expense" ? editingTransaction : null}
+            onCancel={() => setEditingTransaction(null)}
+            onSubmit={saveTransaction}
+          />
+        </>
       );
     }
 
     if (page === "Expense History") {
       return (
-        <TransactionList
-          transactions={expenseTransactions}
-          onEdit={(transaction) => {
-            setEditingTransaction(transaction);
-            setPage("Add Expense");
-          }}
-          onDelete={deleteTransaction}
-          onExportCsv={exportCsv}
-        />
+        <>
+          {renderPrivatePageTitle("Expense History", "Review, filter, and export your saved transactions.")}
+          <TransactionList
+            transactions={expenseTransactions}
+            onEdit={(transaction) => {
+              setEditingTransaction(transaction);
+              setPage("Add Expense");
+            }}
+            onDelete={deleteTransaction}
+            onExportCsv={exportCsv}
+          />
+        </>
       );
     }
 
     if (page === "Add Income") {
       return (
-        <IncomeForm
-          editingIncome={editingTransaction?.type === "income" ? editingTransaction : null}
-          onCancel={() => setEditingTransaction(null)}
-          onSubmit={saveTransaction}
-        />
+        <>
+          {renderPrivatePageTitle("Add Income", "Log salary, freelance work, and other money coming in.")}
+          <IncomeForm
+            editingIncome={editingTransaction?.type === "income" ? editingTransaction : null}
+            onCancel={() => setEditingTransaction(null)}
+            onSubmit={saveTransaction}
+          />
+        </>
       );
     }
 
     if (page === "Future Planning") {
       return (
-        <section className="workspace-grid">
-          <GoalForm editingGoal={editingGoal} onCancel={() => setEditingGoal(null)} onSubmit={saveGoal} />
-          <GoalList goals={goals} onEdit={setEditingGoal} onDelete={deleteGoal} />
-        </section>
+        <>
+          {renderPrivatePageTitle("Future Planning", "Set savings targets and keep upcoming expenses in view.")}
+          <section className="workspace-grid">
+            <GoalForm editingGoal={editingGoal} onCancel={() => setEditingGoal(null)} onSubmit={saveGoal} />
+            <GoalList goals={goals} onEdit={setEditingGoal} onDelete={deleteGoal} />
+          </section>
+        </>
       );
     }
 
     if (page === "Reports") {
       return (
         <>
+          {renderPrivatePageTitle("Reports", "Export data, import spreadsheets, and review your charts.")}
           <section className="panel report-actions">
             <div className="section-heading">
               <p>Reports / Analytics</p>
@@ -419,25 +443,29 @@ export default function App() {
 
     if (page === "Profile") {
       return (
-        <ProfileSettings
-          analytics={analytics}
-          api={api}
-          auth={auth}
-          budgets={budgets}
-          budgetUsage={analytics.dashboard?.budgetUsage || []}
-          darkMode={darkMode}
-          onCreateBudget={saveBudget}
-          onDeleteBudget={deleteBudget}
-          onLogout={handleLogout}
-          onToggleDarkMode={() => setDarkMode((current) => !current)}
-          onUpdateAuth={setAuth}
-        />
+        <>
+          {renderPrivatePageTitle("Profile", "Manage your account, preferences, savings goal, and budgets.")}
+          <ProfileSettings
+            analytics={analytics}
+            api={api}
+            auth={auth}
+            budgets={budgets}
+            budgetUsage={analytics.dashboard?.budgetUsage || []}
+            darkMode={darkMode}
+            onCreateBudget={saveBudget}
+            onDeleteBudget={deleteBudget}
+            onLogout={handleLogout}
+            onToggleDarkMode={() => setDarkMode((current) => !current)}
+            onUpdateAuth={setAuth}
+          />
+        </>
       );
     }
 
     return (
       <>
-        <section className="dashboard-section">
+        {renderPrivatePageTitle("Dashboard", "See your latest totals, charts, activity, and suggestions in one place.")}
+        <section className="dashboard-section dashboard-group">
           <SummaryCards summary={analytics} transactionCount={transactions.length} goalCount={goals.length} />
         </section>
         <section className="panel demo-panel">
@@ -459,7 +487,11 @@ export default function App() {
           </section>
         )}
 
-        <section className="dashboard-section">
+        <section className="dashboard-section dashboard-group">
+          <div className="dashboard-group-heading">
+            <p className="eyebrow">Charts</p>
+            <h2>Spending and trend visuals</h2>
+          </div>
           <DashboardCharts
             analytics={analytics}
             displayCurrency={auth?.user?.defaultCurrency || "CAD"}
@@ -468,11 +500,22 @@ export default function App() {
           />
         </section>
 
-        <section className="dashboard-bottom">
+        <section className="dashboard-group dashboard-recent">
+          <div className="dashboard-group-heading">
+            <p className="eyebrow">Recent transactions</p>
+            <h2>Latest activity</h2>
+          </div>
           <RecentExpenses expenses={expenseTransactions} onViewAll={() => setPage("Expense History")} />
+        </section>
+
+        <section className="dashboard-bottom dashboard-group">
           <div className="stack">
-            <MonthlyReport analytics={analytics} exchangeRate={exchangeRate} />
+            <div className="dashboard-group-heading">
+              <p className="eyebrow">Suggestions</p>
+              <h2>Helpful next steps</h2>
+            </div>
             <Suggestions suggestions={suggestions} />
+            <MonthlyReport analytics={analytics} exchangeRate={exchangeRate} />
           </div>
           <GoalList goals={goals} onEdit={(goal) => {
             setEditingGoal(goal);
@@ -516,36 +559,45 @@ export default function App() {
                 {item}
               </button>
             ))}
+            {auth?.token && (
+              <div className="nav-dropdown">
+                <button
+                  aria-expanded={addMenuOpen}
+                  className={addPages.includes(page) ? "nav-active" : "ghost"}
+                  type="button"
+                  onClick={() => setAddMenuOpen((current) => !current)}
+                >
+                  + Add
+                </button>
+                <div className={`nav-dropdown-menu ${addMenuOpen ? "nav-dropdown-menu-open" : ""}`}>
+                  {addPages.map((item) => (
+                    <button
+                      className={page === item ? "nav-active" : "ghost"}
+                      key={item}
+                      type="button"
+                      onClick={() => setPage(item)}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </nav>
 
-      <header className="app-header">
-        <div>
-          <p className="eyebrow">INR + CAD personal finance</p>
-          <h1>Smart Expense Tracker</h1>
-          <p className="lede">
-            Track money, plan goals, and spot better saving choices before the month gets away.
-          </p>
-        </div>
-        {auth?.user && (
-          <div className="user-menu">
-            <button className="profile-shortcut" type="button" onClick={() => setPage("Profile")}>
-              {auth.user.profilePicture ? (
-                <img className="header-avatar" src={auth.user.profilePicture} alt="" />
-              ) : (
-                <span className="header-avatar placeholder">
-                  {auth.user.name?.slice(0, 1).toUpperCase() || "U"}
-                </span>
-              )}
-              <span>{auth.user.name}</span>
-            </button>
-            <button className="ghost" type="button" onClick={handleLogout}>
-              Logout
-            </button>
+      {!auth?.token && page !== "Home" && (
+        <header className="app-header">
+          <div>
+            <p className="eyebrow">INR + CAD personal finance</p>
+            <h1>Smart Expense Tracker</h1>
+            <p className="lede">
+              Track money, plan goals, and spot better saving choices before the month gets away.
+            </p>
           </div>
-        )}
-      </header>
+        </header>
+      )}
 
       {auth?.token ? renderPrivatePage() : renderPublicPage()}
       <footer className="app-footer">
