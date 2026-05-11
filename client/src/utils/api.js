@@ -1,5 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 const AUTH_KEY = "smart-expense-auth";
+let warmUpPromise = null;
 export const currencyDetails = {
   CAD: {
     code: "CAD",
@@ -48,7 +49,16 @@ async function request(path, options = {}) {
   return response.json();
 }
 
+export function warmUpApi() {
+  if (!warmUpPromise) {
+    warmUpPromise = fetch(`${API_URL}/health`, { method: "GET" }).catch(() => null);
+  }
+
+  return warmUpPromise;
+}
+
 export const api = {
+  warmUp: () => warmUpApi(),
   register: (payload) => request("/auth/register", { method: "POST", body: JSON.stringify(payload) }),
   login: (payload) => request("/auth/login", { method: "POST", body: JSON.stringify(payload) }),
   getProfile: () => request("/auth/me"),

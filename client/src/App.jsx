@@ -108,6 +108,12 @@ export default function App() {
   }, [auth?.token]);
 
   useEffect(() => {
+    if (!auth?.token) {
+      api.warmUp();
+    }
+  }, [auth?.token]);
+
+  useEffect(() => {
     async function loadExchangeRate() {
       if (!auth?.token) {
         setExchangeRate(null);
