@@ -4,6 +4,23 @@ export default function PublicHome({ onNavigate }) {
     { value: "80%", label: "Budget alerts", text: "See warnings before a category gets out of hand." },
     { value: "24/7", label: "Private access", text: "Your data stays tied to your own login." }
   ];
+  const steps = [
+    {
+      number: "1",
+      title: "Create account",
+      description: "Sign up once to open your own private finance workspace."
+    },
+    {
+      number: "2",
+      title: "Add your expenses and income",
+      description: "Record money in and out with categories, dates, and budgets."
+    },
+    {
+      number: "3",
+      title: "Track, plan and save smarter",
+      description: "Use charts, goals, and suggestions to make better decisions each month."
+    }
+  ];
 
   const features = [
     "Expense and income tracking",
@@ -14,6 +31,10 @@ export default function PublicHome({ onNavigate }) {
     "CSV export and print-ready reports"
   ];
 
+  function scrollToHowItWorks() {
+    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <div className="public-page">
       <section className="public-hero">
@@ -23,7 +44,7 @@ export default function PublicHome({ onNavigate }) {
           <p>Track expenses, budgets, and plans in one clean INR and CAD workspace.</p>
           <div className="actions">
             <button type="button" onClick={() => onNavigate("Login / Register")}>Login / Register</button>
-            <button className="ghost" type="button" onClick={() => onNavigate("About")}>About project</button>
+            <button className="ghost" type="button" onClick={scrollToHowItWorks}>See how it works ↓</button>
           </div>
         </div>
         <div className="public-preview" aria-label="Dashboard preview">
@@ -61,6 +82,22 @@ export default function PublicHome({ onNavigate }) {
             <p>{item.text}</p>
           </article>
         ))}
+      </section>
+
+      <section className="panel page-panel how-it-works" id="how-it-works">
+        <div className="section-heading">
+          <p>How it works</p>
+          <h2>Start in three simple steps</h2>
+        </div>
+        <div className="how-it-works-grid">
+          {steps.map((step) => (
+            <article className="how-it-works-card" key={step.number}>
+              <span className="how-it-works-number">{step.number}</span>
+              <strong>{step.title}</strong>
+              <p>{step.description}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="public-split">

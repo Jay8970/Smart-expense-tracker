@@ -2,6 +2,9 @@ import express from "express";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { clearUserCache, primeUserCache, protect } from "../middleware/auth.js";
+import { Budget } from "../models/Budget.js";
+import { Goal } from "../models/Goal.js";
+import { Transaction } from "../models/Transaction.js";
 import { User } from "../models/User.js";
 
 const router = express.Router();
@@ -20,7 +23,8 @@ function toAuthResponse(user) {
       phone: user.phone,
       profilePicture: user.profilePicture,
       defaultCurrency: user.defaultCurrency,
-      monthlySavingsGoal: user.monthlySavingsGoal
+      monthlySavingsGoal: user.monthlySavingsGoal,
+      createdAt: user.createdAt
     }
   };
 }
@@ -75,7 +79,8 @@ router.get("/me", protect, (req, res) => {
       phone: req.user.phone,
       profilePicture: req.user.profilePicture,
       defaultCurrency: req.user.defaultCurrency,
-      monthlySavingsGoal: req.user.monthlySavingsGoal
+      monthlySavingsGoal: req.user.monthlySavingsGoal,
+      createdAt: req.user.createdAt
     }
   });
 });
@@ -125,6 +130,24 @@ router.put("/password", protect, async (req, res, next) => {
     await user.save();
     primeUserCache(user);
     res.json({ message: "Password updated successfully." });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/me", protect, async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    await Promise.all([
+      Transaction.deleteMany({ user: userId }),
+      Goal.deleteMany({ user: userId }),
+      Budget.deleteMany({ user: userId }),
+      User.findByIdAndDelete(userId)
+    ]);
+
+    clearUserCache(userId);
+    res.json({ message: "Account and all related data deleted successfully." });
   } catch (error) {
     next(error);
   }

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { formatMoney } from "../utils/api.js";
 
 const expenseCategories = [
   "Food",
@@ -24,12 +25,18 @@ const initialState = {
   paymentMethod: "Cash",
   recurring: false,
   recurrenceFrequency: "None",
-  note: ""
+  note: "",
+  receiptFile: "",
+  receiptFileName: "",
+  receiptMimeType: ""
 };
 
-export default function TransactionForm({ editingTransaction, onCancel, onSubmit }) {
+export default function TransactionForm({ editingTransaction, onCancel, onSubmit, transactions = [] }) {
   const [form, setForm] = useState(initialState);
-  const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [receiptPreview, setReceiptPreview] = useState("");
+  const [receiptLabel, setReceiptLabel] = useState("");
+  const fieldRefs = useRef({});
 
   useEffect(() => {
     if (editingTransaction) {
@@ -43,32 +50,132 @@ export default function TransactionForm({ editingTransaction, onCancel, onSubmit
         paymentMethod: editingTransaction.paymentMethod || "Cash",
         recurring: Boolean(editingTransaction.recurring),
         recurrenceFrequency: editingTransaction.recurrenceFrequency || "None",
-        note: editingTransaction.note || ""
+        note: editingTransaction.note || "",
+        receiptFile: editingTransaction.receiptFile || "",
+        receiptFileName: editingTransaction.receiptFileName || "",
+        receiptMimeType: editingTransaction.receiptMimeType || ""
       });
+      setReceiptPreview(editingTransaction.receiptMimeType?.startsWith("image/") ? editingTransaction.receiptFile || "" : "");
+      setReceiptLabel(editingTransaction.receiptFileName || "");
+    } else {
+      setForm(initialState);
+      setReceiptPreview("");
+      setReceiptLabel("");
     }
   }, [editingTransaction]);
 
+  const categoryMonthlyTotal = useMemo(() => {
+    const now = new Date();
+    const total = transactions
+      .filter((item) => {
+        if (editingTransaction && item._id === editingTransaction._id) return false;
+        const itemDate = new Date(item.date);
+        return (
+          item.type === "expense" &&
+          item.category === form.category &&
+          item.currency === form.currency &&
+          itemDate.getFullYear() === now.getFullYear() &&
+          itemDate.getMonth() === now.getMonth()
+        );
+      })
+      .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+
+    return total;
+  }, [transactions, form.category, form.currency, editingTransaction]);
+
   function updateField(event) {
     const { name, type, checked, value } = event.target;
+    setFieldErrors((current) => {
+      const next = { ...current };
+      delete next[name];
+      return next;
+    });
     setForm((current) => ({ ...current, [name]: type === "checkbox" ? checked : value }));
+  }
+
+  function setFieldRef(name) {
+    return (node) => {
+      fieldRefs.current[name] = node;
+    };
+  }
+
+  async function handleReceiptChange(event) {
+    const file = event.target.files?.[0];
+    setFieldErrors((current) => {
+      const next = { ...current };
+      delete next.receiptFile;
+      return next;
+    });
+
+    if (!file) {
+      setForm((current) => ({ ...current, receiptFile: "", receiptFileName: "", receiptMimeType: "" }));
+      setReceiptPreview("");
+      setReceiptLabel("");
+      return;
+    }
+
+    const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+    if (!allowedTypes.includes(file.type)) {
+      setFieldErrors((current) => ({ ...current, receiptFile: "Please choose a jpg, png, or pdf file" }));
+      return;
+    }
+
+    const fileData = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(new Error("Could not read receipt file"));
+      reader.readAsDataURL(file);
+    }).catch(() => "");
+
+    if (!fileData) {
+      setFieldErrors((current) => ({ ...current, receiptFile: "Could not read receipt file" }));
+      return;
+    }
+
+    setForm((current) => ({
+      ...current,
+      receiptFile: fileData,
+      receiptFileName: file.name,
+      receiptMimeType: file.type
+    }));
+    setReceiptPreview(file.type.startsWith("image/") ? fileData : "");
+    setReceiptLabel(file.name);
+  }
+
+  function validateForm() {
+    const errors = {};
+
+    if (!form.title.trim()) errors.title = "This field is required";
+    if (!form.category) errors.category = "This field is required";
+    if (!form.currency) errors.currency = "This field is required";
+    if (!form.date) errors.date = "This field is required";
+    if (form.amount === "" || form.amount === null || form.amount === undefined) {
+      errors.amount = "This field is required";
+    } else if (!Number.isFinite(Number(form.amount)) || Number(form.amount) <= 0) {
+      errors.amount = "Please enter a valid amount";
+    }
+
+    return errors;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setError("");
+    const errors = validateForm();
+    setFieldErrors(errors);
 
-    if (form.title.trim().length < 2) {
-      setError("Title must be at least 2 characters.");
-      return;
-    }
-
-    if (Number(form.amount) <= 0) {
-      setError("Amount must be greater than 0.");
+    if (Object.keys(errors).length > 0) {
+      const firstErrorField = ["title", "amount", "category", "currency", "date"].find((field) => errors[field]);
+      const target = fieldRefs.current[firstErrorField];
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+      target?.focus?.();
       return;
     }
 
     await onSubmit({ ...form, type: "expense", amount: Number(form.amount) });
     setForm(initialState);
+    setFieldErrors({});
+    setReceiptPreview("");
+    setReceiptLabel("");
   }
 
   return (
@@ -80,32 +187,71 @@ export default function TransactionForm({ editingTransaction, onCancel, onSubmit
       <form onSubmit={handleSubmit} className="form-grid">
         <label>
           Currency
-          <select name="currency" value={form.currency} onChange={updateField}>
+          <select
+            className={fieldErrors.currency ? "input-error" : ""}
+            name="currency"
+            ref={setFieldRef("currency")}
+            value={form.currency}
+            onChange={updateField}
+          >
             <option value="CAD">CAD</option>
             <option value="INR">INR</option>
           </select>
+          {fieldErrors.currency && <p className="form-error">{fieldErrors.currency}</p>}
         </label>
         <label>
           Title
-          <input name="title" value={form.title} onChange={updateField} placeholder="Groceries" required />
+          <input
+            className={fieldErrors.title ? "input-error" : ""}
+            name="title"
+            ref={setFieldRef("title")}
+            value={form.title}
+            onChange={updateField}
+            placeholder="Groceries"
+          />
+          {fieldErrors.title && <p className="form-error">{fieldErrors.title}</p>}
         </label>
         <label>
           Category
-          <select name="category" value={form.category} onChange={updateField} required>
+          <select
+            className={fieldErrors.category ? "input-error" : ""}
+            name="category"
+            ref={setFieldRef("category")}
+            value={form.category}
+            onChange={updateField}
+          >
             {expenseCategories.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
             ))}
           </select>
+          {fieldErrors.category && <p className="form-error">{fieldErrors.category}</p>}
         </label>
         <label>
           Amount
-          <input name="amount" type="number" min="0" value={form.amount} onChange={updateField} required />
+          <input
+            className={fieldErrors.amount ? "input-error" : ""}
+            name="amount"
+            ref={setFieldRef("amount")}
+            type="number"
+            min="0"
+            value={form.amount}
+            onChange={updateField}
+          />
+          {fieldErrors.amount && <p className="form-error">{fieldErrors.amount}</p>}
         </label>
         <label>
           Date
-          <input name="date" type="date" value={form.date} onChange={updateField} required />
+          <input
+            className={fieldErrors.date ? "input-error" : ""}
+            name="date"
+            ref={setFieldRef("date")}
+            type="date"
+            value={form.date}
+            onChange={updateField}
+          />
+          {fieldErrors.date && <p className="form-error">{fieldErrors.date}</p>}
         </label>
         <label>
           Payment method
@@ -135,6 +281,31 @@ export default function TransactionForm({ editingTransaction, onCancel, onSubmit
           Note
           <input name="note" value={form.note} onChange={updateField} placeholder="Optional details" />
         </label>
+        <label className="full">
+          Receipt (optional)
+          <input
+            accept="image/*,.pdf"
+            capture="environment"
+            name="receiptFile"
+            type="file"
+            onChange={handleReceiptChange}
+          />
+          {fieldErrors.receiptFile && <p className="form-error">{fieldErrors.receiptFile}</p>}
+        </label>
+        {(receiptPreview || receiptLabel) && (
+          <div className="receipt-preview full">
+            {receiptPreview ? (
+              <img className="receipt-preview-image" src={receiptPreview} alt="Receipt preview" />
+            ) : (
+              <div className="receipt-preview-file">{receiptLabel || "Receipt attached"}</div>
+            )}
+          </div>
+        )}
+        {categoryMonthlyTotal > 0 && (
+          <div className="category-spend-box full">
+            You&apos;ve spent {formatMoney(categoryMonthlyTotal, form.currency)} this month in {form.category}
+          </div>
+        )}
         <div className="actions">
           <button type="submit">{editingTransaction ? "Save changes" : "Add expense"}</button>
           {editingTransaction && (
@@ -143,7 +314,6 @@ export default function TransactionForm({ editingTransaction, onCancel, onSubmit
             </button>
           )}
         </div>
-        {error && <p className="form-error full">{error}</p>}
       </form>
     </section>
   );

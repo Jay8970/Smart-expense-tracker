@@ -55,6 +55,17 @@ const transactionSchema = new mongoose.Schema(
     },
     note: {
       ...encryptedStringField({ default: "", trim: true })
+    },
+    receiptFile: {
+      ...encryptedStringField({ default: "" })
+    },
+    receiptFileName: {
+      ...encryptedStringField({ default: "", trim: true })
+    },
+    receiptMimeType: {
+      type: String,
+      trim: true,
+      default: ""
     }
   },
   { timestamps: true, toJSON: { getters: true }, toObject: { getters: true } }

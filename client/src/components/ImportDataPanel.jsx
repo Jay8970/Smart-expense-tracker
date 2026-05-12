@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import * as XLSX from "xlsx";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
 const supportedExtensions = [".csv", ".xlsx", ".xls"];
 const previewColumns = {
@@ -222,13 +223,15 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
       const result = await api.importData(parsedPayload);
       setMessage(result.message || "Data imported successfully.");
       onToast?.(
-        `Imported ${result.counts?.transactions || 0} transactions, ${result.counts?.goals || 0} goals, and ${result.counts?.budgets || 0} budgets.`
+        `Imported ${result.counts?.transactions || 0} transactions, ${result.counts?.goals || 0} goals, and ${result.counts?.budgets || 0} budgets.`,
+        "success"
       );
       setSelectedFile(null);
       setParsedPayload(null);
       onImported?.();
     } catch (nextError) {
       setError(nextError.message || "Import failed.");
+      onToast?.("❌ Something went wrong. Try again.", "error");
     } finally {
       setImporting(false);
     }
@@ -266,7 +269,8 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
       </div>
 
       {selectedFile && <p className="muted">Selected file: {selectedFile.name}</p>}
-      {parsing && <p className="muted">Reading spreadsheet data...</p>}
+      {parsing && <LoadingSpinner label="Reading spreadsheet data..." />}
+      {importing && <LoadingSpinner label="Importing your data..." />}
 
       {parsedPayload && (
         <>

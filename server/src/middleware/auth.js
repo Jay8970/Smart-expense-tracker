@@ -3,7 +3,7 @@ import { User } from "../models/User.js";
 
 const USER_CACHE_TTL_MS = 5 * 60 * 1000;
 const userCache = new Map();
-const authUserFields = "_id name email phone profilePicture defaultCurrency monthlySavingsGoal";
+const authUserFields = "_id name email phone profilePicture defaultCurrency monthlySavingsGoal createdAt";
 
 function getCachedUser(userId) {
   const cached = userCache.get(String(userId));
@@ -28,7 +28,8 @@ export function primeUserCache(user) {
       phone: user.phone,
       profilePicture: user.profilePicture,
       defaultCurrency: user.defaultCurrency,
-      monthlySavingsGoal: user.monthlySavingsGoal
+      monthlySavingsGoal: user.monthlySavingsGoal,
+      createdAt: user.createdAt
     },
     expiresAt: Date.now() + USER_CACHE_TTL_MS
   });

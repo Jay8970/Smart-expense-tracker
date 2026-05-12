@@ -1,4 +1,8 @@
 import {
+  useEffect,
+  useState
+} from "react";
+import {
   Bar,
   BarChart,
   CartesianGrid,
@@ -12,6 +16,7 @@ import {
   YAxis
 } from "recharts";
 import { convertFromBase, formatMoney, getCurrencyLabel } from "../utils/api.js";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
 const colors = ["#0f766e", "#dc2626", "#2563eb", "#ca8a04", "#4f46e5", "#16a34a"];
 const formatAxisValue = (value, currency) => formatMoney(Number(value || 0), currency);
@@ -20,8 +25,10 @@ export default function DashboardCharts({
   analytics,
   exchangeRate,
   displayCurrency = "CAD",
-  variant = "full"
+  variant = "full",
+  loading = false
 }) {
+  const [chartReady, setChartReady] = useState(false);
   const showFullReport = variant === "full";
   const hasCategoryData = (analytics.expensesByCategory || []).length > 0;
   const hasMonthlyData = (analytics.monthlyTrend || []).length > 0;
@@ -36,6 +43,22 @@ export default function DashboardCharts({
     incomeDisplay: convertFromBase(item.incomeCad, displayCurrency, exchangeRate),
     expenseDisplay: convertFromBase(item.expenseCad, displayCurrency, exchangeRate)
   }));
+
+  useEffect(() => {
+    setChartReady(false);
+    const frame = window.requestAnimationFrame(() => setChartReady(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [analytics, displayCurrency, exchangeRate, variant]);
+
+  if (loading || !chartReady) {
+    return (
+      <section className="chart-grid">
+        <article className="panel chart-panel chart-loading-panel">
+          <LoadingSpinner label="Rendering charts..." fullHeight />
+        </article>
+      </section>
+    );
+  }
 
   return (
     <section className="chart-grid">

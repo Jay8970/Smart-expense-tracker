@@ -64,6 +64,7 @@ export const api = {
   getProfile: () => request("/auth/me"),
   updateProfile: (payload) => request("/auth/me", { method: "PUT", body: JSON.stringify(payload) }),
   updatePassword: (payload) => request("/auth/password", { method: "PUT", body: JSON.stringify(payload) }),
+  deleteAccount: () => request("/auth/me", { method: "DELETE" }),
   forgotPassword: (payload) => request("/auth/forgot-password", { method: "POST", body: JSON.stringify(payload) }),
   resetPassword: (payload) => request("/auth/reset-password", { method: "POST", body: JSON.stringify(payload) }),
   getTransactions: () => request("/transactions"),
