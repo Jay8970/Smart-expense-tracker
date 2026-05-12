@@ -6,8 +6,6 @@ import {
   Legend,
   Line,
   LineChart,
-  Pie,
-  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -17,7 +15,6 @@ import { convertFromBase, formatMoney, getCurrencyLabel } from "../utils/api.js"
 
 const colors = ["#0f766e", "#dc2626", "#2563eb", "#ca8a04", "#4f46e5", "#16a34a"];
 const formatAxisValue = (value, currency) => formatMoney(Number(value || 0), currency);
-const formatChartValue = (value) => Number(value || 0).toFixed(2);
 
 export default function DashboardCharts({
   analytics,
@@ -33,6 +30,7 @@ export default function DashboardCharts({
     ...item,
     convertedAmount: convertFromBase(item.amountCad, displayCurrency, exchangeRate)
   }));
+  const categoryChartHeight = Math.max(280, convertedCategoryData.length * 48);
   const convertedMonthlyTrend = (analytics.monthlyTrend || []).map((item) => ({
     ...item,
     incomeDisplay: convertFromBase(item.incomeCad, displayCurrency, exchangeRate),
@@ -47,24 +45,31 @@ export default function DashboardCharts({
           <h2>Spending by category</h2>
         </div>
         {hasCategoryData ? (
-          <ResponsiveContainer width="100%" height={280}>
-            <PieChart>
-              <Pie
-                data={convertedCategoryData}
+          <ResponsiveContainer width="100%" height={categoryChartHeight}>
+            <BarChart
+              data={convertedCategoryData}
+              layout="vertical"
+              margin={{ top: 4, right: 16, bottom: 4, left: 12 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+              <XAxis type="number" tickFormatter={(value) => formatAxisValue(value, displayCurrency)} />
+              <YAxis
+                dataKey="category"
+                type="category"
+                width={110}
+                tick={{ fontSize: 14, fontWeight: 700 }}
+              />
+              <Tooltip formatter={(value, _name, details) => [formatMoney(value, displayCurrency), details?.payload?.category || "Amount"]} />
+              <Bar
                 dataKey="convertedAmount"
-                nameKey="category"
-                cx="50%"
-                cy="50%"
-                outerRadius={95}
-                label={({ value }) => formatChartValue(value)}
+                name="Category spending"
+                radius={[0, 8, 8, 0]}
               >
                 {convertedCategoryData.map((entry, index) => (
                   <Cell key={entry.category} fill={colors[index % colors.length]} />
                 ))}
-              </Pie>
-              <Tooltip formatter={(value, _name, details) => [formatMoney(value, displayCurrency), details?.payload?.category || "Amount"]} />
-              <Legend wrapperStyle={{ fontSize: "1rem", fontWeight: 700, paddingTop: 12 }} />
-            </PieChart>
+              </Bar>
+            </BarChart>
           </ResponsiveContainer>
         ) : (
           <div className="empty-state">No expenses yet. Add your first expense to see category charts.</div>

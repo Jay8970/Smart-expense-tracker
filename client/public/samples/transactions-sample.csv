@@ -1,0 +1,4 @@
+type,title,category,amount,currency,date,paymentMethod,recurring,recurrenceFrequency,note
+expense,Groceries,Food,82.45,CAD,2026-05-01,Debit card,false,None,Weekly grocery shopping
+expense,Apartment Rent,Rent,1284.00,CAD,2026-05-02,Bank transfer,true,Monthly,Monthly rent payment
+income,Freelance Design,Freelance,18000.00,INR,2026-05-04,UPI,false,None,Project payment from client

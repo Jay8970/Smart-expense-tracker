@@ -2,6 +2,11 @@ import { useMemo, useState } from "react";
 import * as XLSX from "xlsx";
 
 const supportedExtensions = [".csv", ".xlsx", ".xls"];
+const previewColumns = {
+  transactions: ["type", "title", "category", "amount", "currency", "date"],
+  goals: ["title", "category", "targetAmount", "savedAmount", "currency", "targetDate"],
+  budgets: ["category", "currency", "monthlyLimit"]
+};
 
 function normalizeHeader(header) {
   return String(header || "")
@@ -123,6 +128,44 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
     }),
     [parsedPayload]
   );
+  const totalRows = summary.transactions + summary.goals + summary.budgets;
+
+  function renderPreviewTable(label, rows, type) {
+    if (!rows.length) return null;
+
+    const columns = previewColumns[type];
+    const previewRows = rows.slice(0, 3);
+
+    return (
+      <article className="import-preview-card">
+        <div className="import-preview-header">
+          <strong>{label}</strong>
+          <span>{rows.length} found</span>
+        </div>
+        <div className="table-wrap">
+          <table className="import-preview-table">
+            <thead>
+              <tr>
+                {columns.map((column) => (
+                  <th key={column}>{column}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {previewRows.map((row, index) => (
+                <tr key={`${label}-${index}`}>
+                  {columns.map((column) => (
+                    <td key={column}>{String(row[column] ?? "-")}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {rows.length > previewRows.length && <p className="muted">Showing the first {previewRows.length} rows.</p>}
+      </article>
+    );
+  }
 
   async function handleFileChange(event) {
     const file = event.target.files?.[0];
@@ -178,49 +221,63 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
         <h2>Upload CSV or Excel</h2>
       </div>
       <p className="muted">
-        Supported files: {supportedExtensions.join(", ")}. CSV imports transaction rows. Excel files can include sheets named
-        <strong> Transactions</strong>, <strong>Goals</strong>, and <strong>Budgets</strong>.
-      </p>
-      <p className="muted">
-        Transaction columns: <code>type, title, category, amount, currency, date, paymentMethod, recurring, recurrenceFrequency, note</code>
-      </p>
-      <p className="muted">
-        Goal columns: <code>title, category, targetAmount, savedAmount, currency, targetDate, priority, status</code>
-      </p>
-      <p className="muted">
-        Budget columns: <code>category, currency, monthlyLimit</code>
+        Not sure about the format? Download a sample file, fill in your data, and re-upload.
       </p>
 
-      <label className="upload-button">
-        Choose file
-        <input accept=".csv,.xlsx,.xls" type="file" onChange={handleFileChange} />
-      </label>
+      <div className="import-downloads">
+        <a className="download-button" href="/samples/transactions-sample.csv" download>
+          Download Sample CSV
+        </a>
+        <a className="download-button ghost-download" href="/samples/smart-expense-import-sample.xlsx" download>
+          Download Sample Excel
+        </a>
+      </div>
+
+      <p className="import-helper">Fill in your data, then upload below.</p>
+
+      <div className="import-upload-row">
+        <label className="upload-button">
+          Choose file
+          <input accept=".csv,.xlsx,.xls" type="file" onChange={handleFileChange} />
+        </label>
+        <button type="button" disabled={!parsedPayload || importing || parsing} onClick={handleImport}>
+          {importing ? "Importing..." : "Import file"}
+        </button>
+      </div>
 
       {selectedFile && <p className="muted">Selected file: {selectedFile.name}</p>}
       {parsing && <p className="muted">Reading spreadsheet data...</p>}
 
       {parsedPayload && (
-        <div className="import-summary">
-          <article>
-            <strong>{summary.transactions}</strong>
-            <span>Transactions</span>
-          </article>
-          <article>
-            <strong>{summary.goals}</strong>
-            <span>Goals</span>
-          </article>
-          <article>
-            <strong>{summary.budgets}</strong>
-            <span>Budgets</span>
-          </article>
-        </div>
-      )}
+        <>
+          <div className="import-summary">
+            <article>
+              <strong>{summary.transactions}</strong>
+              <span>Transactions</span>
+            </article>
+            <article>
+              <strong>{summary.goals}</strong>
+              <span>Goals</span>
+            </article>
+            <article>
+              <strong>{summary.budgets}</strong>
+              <span>Budgets</span>
+            </article>
+          </div>
 
-      <div className="actions">
-        <button type="button" disabled={!parsedPayload || importing || parsing} onClick={handleImport}>
-          {importing ? "Importing..." : "Import file"}
-        </button>
-      </div>
+          <section className="import-confirmation">
+            <div className="section-heading">
+              <p>Preview</p>
+              <h2>We found {totalRows} rows. Confirm import?</h2>
+            </div>
+            <div className="import-preview-grid">
+              {renderPreviewTable("Transactions", parsedPayload.transactions, "transactions")}
+              {renderPreviewTable("Goals", parsedPayload.goals, "goals")}
+              {renderPreviewTable("Budgets", parsedPayload.budgets, "budgets")}
+            </div>
+          </section>
+        </>
+      )}
 
       {error && <p className="form-error">{error}</p>}
       {message && <p className="success-message">{message}</p>}

@@ -944,6 +944,43 @@ body.dark-mode .currency-badge.inr {
   margin-bottom: 16px;
 }
 
+.import-downloads,
+.import-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.download-button {
+  background: #0f766e;
+  border-radius: 8px;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 700;
+  padding: 11px 14px;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background: #0b5f59;
+}
+
+.ghost-download {
+  background: #eef4f0;
+  color: #17211d;
+}
+
+.ghost-download:hover {
+  background: #dfe8e2;
+}
+
+.import-helper {
+  color: #536059;
+  font-weight: 700;
+  margin: 0;
+}
+
 .import-summary {
   display: grid;
   gap: 10px;
@@ -965,6 +1002,46 @@ body.dark-mode .currency-badge.inr {
 .import-summary span {
   color: #536059;
   font-weight: 800;
+}
+
+.import-confirmation {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.import-preview-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.import-preview-card {
+  border: 1px solid #e2e8e3;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.import-preview-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.import-preview-header strong {
+  font-size: 1rem;
+}
+
+.import-preview-header span {
+  color: #536059;
+  font-weight: 800;
+}
+
+.import-preview-table th,
+.import-preview-table td {
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .auth-layout {
@@ -1320,6 +1397,7 @@ body.dark-mode .page-title-copy {
 body.dark-mode .goal-card,
 body.dark-mode .budget-row,
 body.dark-mode .import-summary article,
+body.dark-mode .import-preview-card,
 body.dark-mode .profile-summary-grid article,
 body.dark-mode .report-list article,
 body.dark-mode .recent-row,
@@ -1336,6 +1414,16 @@ body.dark-mode .nav-dropdown-menu {
 }
 
 body.dark-mode .upload-button {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+body.dark-mode .download-button {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+body.dark-mode .ghost-download {
   background: #374151;
   color: #e5e7eb;
 }
@@ -1441,6 +1529,12 @@ body.dark-mode .upload-button {
 
   .import-summary {
     grid-template-columns: 1fr;
+  }
+
+  .import-downloads,
+  .import-upload-row {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .app-header {
