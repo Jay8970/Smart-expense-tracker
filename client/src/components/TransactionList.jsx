@@ -67,18 +67,19 @@ export default function TransactionList({ transactions, onEdit, onDelete, onExpo
           To
           <input name="to" type="date" value={filters.to} onChange={updateFilter} />
         </label>
-        <div className="actions">
+        <div className="actions filter-actions">
           <button className="ghost" type="button" onClick={() => onExportCsv(filteredTransactions)}>
             Export CSV
           </button>
         </div>
       </div>
-      <div className="table-wrap">
-        {filteredTransactions.length === 0 ? (
-          <div className="empty-state table-empty-state">
-            No expenses yet. Add your first one to start building your history.
-          </div>
-        ) : (
+      {filteredTransactions.length === 0 ? (
+        <div className="empty-state table-empty-state">
+          No expenses yet. Add your first one to start building your history.
+        </div>
+      ) : (
+        <>
+          <div className="table-wrap transaction-history-table">
           <table>
             <thead>
               <tr>
@@ -112,8 +113,30 @@ export default function TransactionList({ transactions, onEdit, onDelete, onExpo
               ))}
             </tbody>
           </table>
-        )}
-      </div>
+          </div>
+          <div className="transaction-history-cards">
+            {filteredTransactions.map((item) => (
+              <article className="transaction-card" key={`${item._id}-mobile`}>
+                <div className="transaction-card-top">
+                  <strong>{item.title}</strong>
+                  <strong>{formatMoney(item.amount, item.currency)}</strong>
+                </div>
+                <div className="transaction-card-meta">
+                  <span className="category-label">{getCategoryIcon(item.category)} {item.category}</span>
+                  <span className={`pill ${item.type}`}>{item.type}</span>
+                </div>
+                <p className="transaction-card-detail">
+                  {(item.type === "expense" ? item.paymentMethod || "Cash" : "-")} · {new Date(item.date).toLocaleDateString()}
+                </p>
+                <div className="row-actions transaction-card-actions">
+                  <button className="mini" onClick={() => onEdit(item)}>Edit</button>
+                  <button className="mini danger" onClick={() => onDelete(item._id)}>Delete</button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }

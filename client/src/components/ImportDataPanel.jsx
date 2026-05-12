@@ -135,6 +135,17 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
 
     const columns = previewColumns[type];
     const previewRows = rows.slice(0, 3);
+    const getRowTitle = (row) => row.title || row.category || "Imported row";
+    const getRowMeta = (row) => {
+      if (type === "transactions") return `${row.category || "-"} · ${row.type || "-"}`;
+      if (type === "goals") return `${row.category || "-"} · goal`;
+      return `${row.category || "-"} · budget`;
+    };
+    const getRowAmount = (row) => {
+      if (type === "transactions") return `${row.amount || "-"} ${row.currency || ""}`.trim();
+      if (type === "goals") return `${row.targetAmount || "-"} ${row.currency || ""}`.trim();
+      return `${row.monthlyLimit || "-"} ${row.currency || ""}`.trim();
+    };
 
     return (
       <article className="import-preview-card">
@@ -142,7 +153,7 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
           <strong>{label}</strong>
           <span>{rows.length} found</span>
         </div>
-        <div className="table-wrap">
+        <div className="table-wrap import-preview-table-wrap">
           <table className="import-preview-table">
             <thead>
               <tr>
@@ -161,6 +172,15 @@ export default function ImportDataPanel({ api, onImported, onToast }) {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="import-preview-mobile-list">
+          {previewRows.map((row, index) => (
+            <article className="import-preview-mobile-row" key={`${label}-mobile-${index}`}>
+              <strong>{getRowTitle(row)}</strong>
+              <span>{getRowMeta(row)}</span>
+              <small>{getRowAmount(row)}</small>
+            </article>
+          ))}
         </div>
         {rows.length > previewRows.length && <p className="muted">Showing the first {previewRows.length} rows.</p>}
       </article>

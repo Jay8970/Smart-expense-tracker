@@ -555,39 +555,59 @@ export default function App() {
             <span />
           </button>
           <div className={`nav-links ${mobileMenuOpen ? "nav-links-open" : ""}`}>
-            {(auth?.token ? privatePages : publicPages).map((item) => (
-              <button
-                className={page === item ? "nav-active" : "ghost"}
-                key={item}
-                type="button"
-                onClick={() => setPage(item)}
-              >
-                {item}
-              </button>
-            ))}
-            {auth?.token && (
-              <div className="nav-dropdown">
+            {!auth?.token ? (
+              publicPages.map((item) => (
                 <button
-                  aria-expanded={addMenuOpen}
-                  className={addPages.includes(page) ? "nav-active" : "ghost"}
+                  className={page === item ? "nav-active" : "ghost"}
+                  key={item}
                   type="button"
-                  onClick={() => setAddMenuOpen((current) => !current)}
+                  onClick={() => setPage(item)}
                 >
-                  + Add
+                  {item}
                 </button>
-                <div className={`nav-dropdown-menu ${addMenuOpen ? "nav-dropdown-menu-open" : ""}`}>
-                  {addPages.map((item) => (
-                    <button
-                      className={page === item ? "nav-active" : "ghost"}
-                      key={item}
-                      type="button"
-                      onClick={() => setPage(item)}
-                    >
-                      {item}
-                    </button>
-                  ))}
+              ))
+            ) : (
+              <>
+                <button
+                  className={page === "Dashboard" ? "nav-active" : "ghost"}
+                  type="button"
+                  onClick={() => setPage("Dashboard")}
+                >
+                  Dashboard
+                </button>
+                <div className="nav-dropdown">
+                  <button
+                    aria-expanded={addMenuOpen}
+                    className={addPages.includes(page) ? "nav-active" : "ghost"}
+                    type="button"
+                    onClick={() => setAddMenuOpen((current) => !current)}
+                  >
+                    + Add
+                  </button>
+                  <div className={`nav-dropdown-menu ${addMenuOpen ? "nav-dropdown-menu-open" : ""}`}>
+                    {addPages.map((item) => (
+                      <button
+                        className={page === item ? "nav-active" : "ghost"}
+                        key={item}
+                        type="button"
+                        onClick={() => setPage(item)}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+                {privatePages.filter((item) => item !== "Dashboard").map((item) => (
+                  <button
+                    className={page === item ? "nav-active" : "ghost"}
+                    key={item}
+                    type="button"
+                    onClick={() => setPage(item)}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </>
             )}
           </div>
         </div>
