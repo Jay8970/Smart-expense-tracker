@@ -941,17 +941,31 @@ body.dark-mode .currency-badge.inr {
 .import-panel {
   box-sizing: border-box;
   display: grid;
-  gap: 12px;
+  gap: 18px;
   margin-bottom: 16px;
   max-width: 100%;
-  padding: 0 16px;
+  padding: 28px 32px;
+}
+
+.import-panel .section-heading {
+  margin-bottom: 8px;
+}
+
+.import-panel .section-heading h2 {
+  font-size: 2rem;
+}
+
+.import-panel .muted,
+.import-helper {
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .import-downloads,
 .import-upload-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 
@@ -961,7 +975,8 @@ body.dark-mode .currency-badge.inr {
   color: #ffffff;
   display: inline-flex;
   font-weight: 700;
-  padding: 11px 14px;
+  min-height: 52px;
+  padding: 14px 18px;
   text-decoration: none;
 }
 
@@ -982,6 +997,12 @@ body.dark-mode .currency-badge.inr {
   color: #536059;
   font-weight: 700;
   margin: 0;
+}
+
+.import-upload-row .upload-button,
+.import-upload-row button {
+  min-height: 52px;
+  padding: 14px 18px;
 }
 
 .import-summary {
@@ -1013,7 +1034,7 @@ body.dark-mode .currency-badge.inr {
   gap: 12px;
   margin-top: 8px;
   max-width: 100%;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .import-preview-grid {
@@ -1021,7 +1042,7 @@ body.dark-mode .currency-badge.inr {
   display: grid;
   gap: 12px;
   max-width: 100%;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .import-preview-card {
