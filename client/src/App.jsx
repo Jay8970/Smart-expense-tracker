@@ -811,10 +811,10 @@ export default function App() {
     [reportSnapshot]
   );
 
-  function renderPrivatePageTitle(title, subtitle) {
+  function renderPrivatePageTitle(title, subtitle, options = {}) {
     return (
       <section className="page-title-block">
-        <p className="eyebrow">Smart Expense Tracker</p>
+        {options.showEyebrow !== false ? <p className="eyebrow">Smart Expense Tracker</p> : null}
         <h1>{title}</h1>
         {subtitle && <p className="page-title-copy">{subtitle}</p>}
       </section>
@@ -1026,7 +1026,7 @@ export default function App() {
       if (loading) {
         return (
           <>
-            {renderPrivatePageTitle("Profile", "Manage your account, preferences, savings goal, and budgets.")}
+            {renderPrivatePageTitle("Profile", "Manage your account, preferences, savings goal, and budgets.", { showEyebrow: false })}
             <section className="panel">
               <LoadingSpinner label="Loading your profile..." fullHeight />
             </section>
@@ -1036,7 +1036,7 @@ export default function App() {
 
       return (
         <>
-          {renderPrivatePageTitle("Profile", "Manage your account, preferences, savings goal, and budgets.")}
+          {renderPrivatePageTitle("Profile", "Manage your account, preferences, savings goal, and budgets.", { showEyebrow: false })}
           <ProfileSettings
             analytics={analytics}
             api={api}
@@ -1044,10 +1044,10 @@ export default function App() {
             budgets={budgets}
             budgetUsage={analytics.dashboard?.budgetUsage || []}
             darkMode={darkMode}
+            exchangeRate={exchangeRate}
             goals={goals}
             onCreateBudget={saveBudget}
             onDeleteBudget={deleteBudget}
-            onLogout={handleLogout}
             onToggleDarkMode={() => setDarkMode((current) => !current)}
             onUpdateAuth={setAuth}
             transactions={transactions}
@@ -1188,6 +1188,20 @@ export default function App() {
           </span>
         </strong>
         <div className="nav-actions">
+          {auth?.token ? (
+            <div className="nav-profile-area">
+              <button
+                className={page === "Profile" ? "nav-active nav-profile-button" : "ghost nav-profile-button"}
+                type="button"
+                onClick={() => setPage("Profile")}
+              >
+                Profile
+              </button>
+              <button className="ghost nav-logout-button" type="button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          ) : null}
           <button
             aria-expanded={mobileMenuOpen}
             aria-label="Open navigation menu"

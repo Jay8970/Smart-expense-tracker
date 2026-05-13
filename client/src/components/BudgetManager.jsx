@@ -21,7 +21,31 @@ const initialState = {
   monthlyLimit: ""
 };
 
-export default function BudgetManager({ budgets, budgetUsage = [], onCreate, onDelete }) {
+function convertBudgetAmount(amount, sourceCurrency, displayCurrency, exchangeRate) {
+  const numericAmount = Number(amount || 0);
+  if (!displayCurrency || sourceCurrency === displayCurrency) return numericAmount;
+
+  const inrRate = Number(exchangeRate?.rates?.INR || 60);
+  if (sourceCurrency === "INR" && displayCurrency === "CAD") {
+    return numericAmount / inrRate;
+  }
+
+  if (sourceCurrency === "CAD" && displayCurrency === "INR") {
+    return numericAmount * inrRate;
+  }
+
+  return numericAmount;
+}
+
+export default function BudgetManager({
+  budgets,
+  budgetUsage = [],
+  onCreate,
+  onDelete,
+  displayCurrency = null,
+  exchangeRate = null,
+  layout = "stack"
+}) {
   const [form, setForm] = useState(initialState);
 
   function updateField(event) {
@@ -41,8 +65,16 @@ export default function BudgetManager({ budgets, budgetUsage = [], onCreate, onD
     );
   }
 
+  function formatBudgetDisplay(amount, currency) {
+    if (!displayCurrency) {
+      return formatMoney(amount, currency);
+    }
+
+    return formatMoney(convertBudgetAmount(amount, currency, displayCurrency, exchangeRate), displayCurrency);
+  }
+
   return (
-    <section className="panel">
+    <section className={`panel budget-manager-panel ${layout === "grid" ? "budget-manager-grid-layout" : ""}`}>
       <div className="section-heading">
         <p>Monthly budget limit</p>
         <h2>Category budgets</h2>
@@ -72,7 +104,7 @@ export default function BudgetManager({ budgets, budgetUsage = [], onCreate, onD
         </div>
       </form>
 
-      <div className="budget-list">
+      <div className={`budget-list ${layout === "grid" ? "budget-list-grid" : ""}`}>
         {budgets.length === 0 && <p className="muted">No budgets yet. Add a category limit to unlock warnings.</p>}
         {budgets.map((budget) => (
           <article className="budget-row" key={budget._id}>
@@ -82,10 +114,10 @@ export default function BudgetManager({ budgets, budgetUsage = [], onCreate, onD
                 <span style={{ width: `${Math.min(findUsage(budget)?.usedPercent || 0, 100)}%` }} />
               </div>
               <small>
-                {findUsage(budget)?.usedPercent || 0}% used · {formatMoney(findUsage(budget)?.usedAmount || 0, budget.currency)}
+                {findUsage(budget)?.usedPercent || 0}% used · {formatBudgetDisplay(findUsage(budget)?.usedAmount || 0, budget.currency)}
               </small>
             </div>
-            <strong>{formatMoney(budget.monthlyLimit, budget.currency)}</strong>
+            <strong>{formatBudgetDisplay(budget.monthlyLimit, budget.currency)}</strong>
             <button className="mini danger" type="button" onClick={() => onDelete(budget._id)}>Delete</button>
           </article>
         ))}

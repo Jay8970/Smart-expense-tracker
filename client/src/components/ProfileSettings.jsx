@@ -2,7 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
 import { formatMoney, getCurrencyLabel, storeAuth } from "../utils/api.js";
 import BudgetManager from "./BudgetManager.jsx";
-import CurrencyPair from "./CurrencyPair.jsx";
+
+const summaryCards = [
+  { key: "totalIncome", label: "Total income" },
+  { key: "totalExpense", label: "Total expense" },
+  { key: "remainingBalance", label: "Balance" },
+  { key: "futurePlanned", label: "Future plans" }
+];
 
 export default function ProfileSettings({
   auth,
@@ -10,9 +16,9 @@ export default function ProfileSettings({
   budgets,
   budgetUsage,
   darkMode,
+  exchangeRate,
   goals,
   onToggleDarkMode,
-  onLogout,
   onCreateBudget,
   onDeleteBudget,
   onUpdateAuth,
@@ -33,17 +39,19 @@ export default function ProfileSettings({
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
   const [deletingAccount, setDeletingAccount] = useState(false);
+  const [summaryCurrency, setSummaryCurrency] = useState(auth.user.defaultCurrency || "CAD");
   const dashboard = analytics.dashboard || {};
   const memberSinceLabel = useMemo(() => {
     if (!auth.user.createdAt) return "";
     return new Intl.DateTimeFormat("en-CA", { month: "long", year: "numeric" }).format(new Date(auth.user.createdAt));
   }, [auth.user.createdAt]);
+  const savingsGoalValue = Number(profile.monthlySavingsGoal || 0);
   const savingsProgress = useMemo(() => {
-    const goal = Number(profile.monthlySavingsGoal || 0);
     const savedCad = Math.max((dashboard.totalIncome?.CAD || 0) - (dashboard.totalExpense?.CAD || 0), 0);
-    return goal > 0 ? Math.min(Math.round((savedCad / goal) * 100), 100) : 0;
-  }, [dashboard, profile.monthlySavingsGoal]);
+    return savingsGoalValue > 0 ? Math.min(Math.round((savedCad / savingsGoalValue) * 100), 100) : 0;
+  }, [dashboard, savingsGoalValue]);
   const canConfirmDelete = deleteConfirmText.trim() === "DELETE";
+  const balanceValue = Number(dashboard.remainingBalance?.[summaryCurrency] || 0);
 
   useEffect(() => {
     setProfile({
@@ -54,6 +62,7 @@ export default function ProfileSettings({
       defaultCurrency: auth.user.defaultCurrency || "CAD",
       monthlySavingsGoal: auth.user.monthlySavingsGoal || 0
     });
+    setSummaryCurrency(auth.user.defaultCurrency || "CAD");
   }, [auth.user]);
 
   function updateProfileField(event) {
@@ -190,7 +199,7 @@ export default function ProfileSettings({
       await api.deleteAccount();
       setDeleteModalOpen(false);
       setDeleteConfirmText("");
-      onLogout();
+      window.location.reload();
     } catch (error) {
       setMessage(error.message || "Could not delete your account.");
     } finally {
@@ -204,11 +213,31 @@ export default function ProfileSettings({
     setDeleteConfirmText("");
   }
 
+  function handleChangeEmailClick(event) {
+    event.preventDefault();
+    setMessage("Email changes are not available from the profile page yet.");
+  }
+
   return (
     <>
-      <div className="profile-grid">
-        <div className="profile-column">
-          <section className="panel profile-card">
+      <div className="profile-layout">
+        <section className="profile-top-grid">
+          <section className="panel profile-card profile-equal-card">
+            <div className="profile-card-topbar">
+              <div className="section-heading profile-heading-tight">
+                <p>Account details</p>
+                <h2>Your profile</h2>
+              </div>
+              <button
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+                className="theme-icon-button"
+                type="button"
+                onClick={onToggleDarkMode}
+              >
+                {darkMode ? "\u2600" : "\u263E"}
+              </button>
+            </div>
+
             <div className="profile-photo-wrap">
               {profile.profilePicture ? (
                 <img className="profile-photo" src={profile.profilePicture} alt="Profile" />
@@ -226,12 +255,15 @@ export default function ProfileSettings({
                 Full name
                 <input name="name" value={profile.name} onChange={updateProfileField} required />
               </label>
-              <label>
-                Email
-                <input name="email" type="email" value={profile.email} onChange={updateProfileField} required />
+              <div className="profile-readonly-block">
+                <span className="profile-readonly-label">Email</span>
+                <strong className="profile-readonly-value">{profile.email}</strong>
+                <button className="link-button profile-link" type="button" onClick={handleChangeEmailClick}>
+                  Change email
+                </button>
                 <small className="muted profile-meta">Member since {memberSinceLabel || "unknown"}</small>
                 <small className="muted profile-meta">Total transactions recorded: {transactions.length}</small>
-              </label>
+              </div>
               <label>
                 Phone
                 <input name="phone" value={profile.phone} onChange={updateProfileField} placeholder="Optional" />
@@ -255,14 +287,49 @@ export default function ProfileSettings({
               </label>
               <div className="actions full">
                 <button type="submit">Save profile</button>
-                <button className="ghost" type="button" onClick={onToggleDarkMode}>
-                  {darkMode ? "Light mode" : "Dark mode"}
-                </button>
               </div>
             </form>
             {message && <p className="success-message">{message}</p>}
           </section>
 
+          <section className="panel profile-equal-card">
+            <div className="section-heading">
+              <p>Account summary</p>
+              <h2>Your money snapshot</h2>
+            </div>
+            <div className="profile-currency-toggle" role="tablist" aria-label="Summary currency">
+              {["CAD", "INR"].map((currency) => (
+                <button
+                  className={summaryCurrency === currency ? "profile-toggle-active" : "profile-toggle-button"}
+                  key={currency}
+                  type="button"
+                  onClick={() => setSummaryCurrency(currency)}
+                >
+                  {currency}
+                </button>
+              ))}
+            </div>
+            <div className="profile-summary-grid">
+              {summaryCards.map((card) => {
+                const value = Number(dashboard[card.key]?.[summaryCurrency] || 0);
+                const isBalanceCard = card.key === "remainingBalance";
+                return (
+                  <article key={card.key}>
+                    <span>{card.label}</span>
+                    <strong className={isBalanceCard && value < 0 ? "negative-balance" : ""}>
+                      {formatMoney(value, summaryCurrency)}
+                    </strong>
+                    {isBalanceCard && value < 0 ? (
+                      <small className="balance-warning">Expenses exceed income</small>
+                    ) : null}
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        </section>
+
+        <section className="profile-middle-grid">
           <section className="panel">
             <div className="section-heading">
               <p>Security settings</p>
@@ -292,7 +359,6 @@ export default function ProfileSettings({
               </label>
               <div className="actions full">
                 <button type="submit">Update password</button>
-                <button className="danger" type="button" onClick={onLogout}>Logout</button>
               </div>
             </form>
           </section>
@@ -315,34 +381,9 @@ export default function ProfileSettings({
               </button>
             </div>
           </section>
-        </div>
+        </section>
 
-        <div className="profile-column">
-          <section className="panel">
-            <div className="section-heading">
-              <p>Account summary</p>
-              <h2>Your money snapshot</h2>
-            </div>
-            <div className="profile-summary-grid">
-              <article>
-                <span>Total income</span>
-                <CurrencyPair values={dashboard.totalIncome || { CAD: 0, INR: 0 }} />
-              </article>
-              <article>
-                <span>Total expense</span>
-                <CurrencyPair values={dashboard.totalExpense || { CAD: 0, INR: 0 }} />
-              </article>
-              <article>
-                <span>Balance</span>
-                <CurrencyPair values={dashboard.remainingBalance || { CAD: 0, INR: 0 }} />
-              </article>
-              <article>
-                <span>Future plans</span>
-                <CurrencyPair values={dashboard.futurePlanned || { CAD: 0, INR: 0 }} />
-              </article>
-            </div>
-          </section>
-
+        <section className="profile-bottom-stack">
           <section className="panel">
             <div className="section-heading">
               <p>Savings progress</p>
@@ -354,18 +395,30 @@ export default function ProfileSettings({
             <p className="muted">
               Charts and converted reports use {getCurrencyLabel(profile.defaultCurrency)}.
             </p>
-            <p className="muted">
-              {savingsProgress}% of {formatMoney(Number(profile.monthlySavingsGoal || 0), "CAD")} monthly savings goal.
-            </p>
+            {savingsGoalValue > 0 ? (
+              <p className="muted">
+                {savingsProgress}% of {formatMoney(savingsGoalValue, "CAD")} monthly savings goal.
+              </p>
+            ) : (
+              <p className="savings-nudge">Set a goal to track your monthly progress.</p>
+            )}
           </section>
 
-          <BudgetManager budgets={budgets} budgetUsage={budgetUsage} onCreate={onCreateBudget} onDelete={onDeleteBudget} />
-        </div>
+          <BudgetManager
+            budgetUsage={budgetUsage}
+            budgets={budgets}
+            displayCurrency="CAD"
+            exchangeRate={exchangeRate}
+            layout="grid"
+            onCreate={onCreateBudget}
+            onDelete={onDeleteBudget}
+          />
+        </section>
       </div>
 
-      <section className="panel danger-zone-card">
+      <section className="panel danger-zone-card danger-zone-spacious">
         <div className="section-heading">
-          <p className="danger-zone-kicker">⚠️ Danger Zone</p>
+          <p className="danger-zone-kicker">Danger Zone</p>
           <h2>Delete your account</h2>
         </div>
         <p className="muted">
@@ -388,7 +441,7 @@ export default function ProfileSettings({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="section-heading">
-              <p className="danger-zone-kicker">⚠️ Danger Zone</p>
+              <p className="danger-zone-kicker">Danger Zone</p>
               <h2 id="delete-account-title">Confirm account deletion</h2>
             </div>
             <p>
