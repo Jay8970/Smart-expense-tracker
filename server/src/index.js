@@ -1,3 +1,4 @@
+import compression from "compression";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
@@ -9,6 +10,7 @@ import budgetsRouter from "./routes/budgets.js";
 import exchangeRateRouter from "./routes/exchangeRate.js";
 import goalsRouter from "./routes/goals.js";
 import importsRouter from "./routes/imports.js";
+import reportsRouter from "./routes/reports.js";
 import suggestionsRouter from "./routes/suggestions.js";
 import transactionsRouter from "./routes/transactions.js";
 import { isUsingDedicatedEncryptionKey } from "./utils/fieldEncryption.js";
@@ -39,6 +41,7 @@ app.use(
   })
 );
 app.use(express.json({ limit: "8mb" }));
+app.use(compression());
 app.use(morgan("dev"));
 
 app.get("/api/health", (_req, res) => {
@@ -52,6 +55,7 @@ app.use("/api/transactions", transactionsRouter);
 app.use("/api/goals", goalsRouter);
 app.use("/api/budgets", budgetsRouter);
 app.use("/api/analytics", analyticsRouter);
+app.use("/api/reports", reportsRouter);
 app.use("/api/suggestions", suggestionsRouter);
 
 app.use((err, _req, res, _next) => {

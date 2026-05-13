@@ -1,5 +1,7 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 const AUTH_KEY = "smart-expense-auth";
+const TOKEN_KEY = "token";
+const PROFILE_KEY = "userProfile";
 let warmUpPromise = null;
 export const currencyDetails = {
   CAD: {
@@ -16,22 +18,84 @@ export const currencyDetails = {
   }
 };
 
+function parseJwtPayload(token) {
+  try {
+    const payload = token.split(".")[1];
+    if (!payload) return null;
+    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized.padEnd(normalized.length + ((4 - (normalized.length % 4)) % 4), "=");
+    return JSON.parse(window.atob(padded));
+  } catch (_error) {
+    return null;
+  }
+}
+
+export function isTokenExpired(token) {
+  if (!token) return true;
+  const payload = parseJwtPayload(token);
+  if (!payload?.exp) {
+    return false;
+  }
+
+  return payload.exp * 1000 <= Date.now();
+}
+
 export function getStoredAuth() {
   const rawAuth = localStorage.getItem(AUTH_KEY);
-  return rawAuth ? JSON.parse(rawAuth) : null;
+  const rawToken = localStorage.getItem(TOKEN_KEY);
+  const rawProfile = localStorage.getItem(PROFILE_KEY);
+
+  if (rawAuth) {
+    try {
+      const parsedAuth = JSON.parse(rawAuth);
+      if (parsedAuth?.token && !isTokenExpired(parsedAuth.token)) {
+        return parsedAuth;
+      }
+    } catch (_error) {
+      // Fall through to token/profile recovery below.
+    }
+  }
+
+  if (rawToken && !isTokenExpired(rawToken)) {
+    try {
+      const parsedProfile = rawProfile ? JSON.parse(rawProfile) : null;
+      const recoveredAuth = {
+        token: rawToken,
+        user: parsedProfile
+      };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(recoveredAuth));
+      return recoveredAuth;
+    } catch (_error) {
+      const recoveredAuth = { token: rawToken, user: null };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(recoveredAuth));
+      return recoveredAuth;
+    }
+  }
+
+  clearAuth();
+  return null;
 }
 
 export function storeAuth(auth) {
+  if (auth?.token) {
+    localStorage.setItem(TOKEN_KEY, auth.token);
+  }
+  if (auth?.user) {
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(auth.user));
+  }
   localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
 }
 
 export function clearAuth() {
   localStorage.removeItem(AUTH_KEY);
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(PROFILE_KEY);
 }
 
 async function request(path, options = {}) {
   const auth = getStoredAuth();
   const response = await fetch(`${API_URL}${path}`, {
+    keepalive: true,
     headers: {
       "Content-Type": "application/json",
       ...(auth?.token ? { Authorization: `Bearer ${auth.token}` } : {}),
@@ -51,7 +115,7 @@ async function request(path, options = {}) {
 
 export function warmUpApi() {
   if (!warmUpPromise) {
-    warmUpPromise = fetch(`${API_URL}/health`, { method: "GET" }).catch(() => null);
+    warmUpPromise = fetch(`${API_URL}/health`, { method: "GET", keepalive: true }).catch(() => null);
   }
 
   return warmUpPromise;
@@ -81,6 +145,9 @@ export const api = {
   createBudget: (payload) => request("/budgets", { method: "POST", body: JSON.stringify(payload) }),
   deleteBudget: (id) => request(`/budgets/${id}`, { method: "DELETE" }),
   getAnalytics: () => request("/analytics"),
+  getReportCharts: (month, year) => request(`/reports/charts?month=${month}&year=${year}`),
+  getReportSummary: (month, year, currency) =>
+    request(`/reports/summary?month=${month}&year=${year}&currency=${currency}`),
   getSuggestions: () => request("/suggestions"),
   getExchangeRate: () => request("/exchange-rate"),
   importData: (payload) => request("/import", { method: "POST", body: JSON.stringify(payload) })

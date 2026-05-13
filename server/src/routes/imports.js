@@ -3,6 +3,7 @@ import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
 import { Goal } from "../models/Goal.js";
 import { Transaction } from "../models/Transaction.js";
+import { clearReportCacheForUser } from "../utils/reportCache.js";
 
 const router = express.Router();
 
@@ -166,6 +167,8 @@ router.post("/", async (req, res, next) => {
           )
         : Promise.resolve()
     ]);
+
+    clearReportCacheForUser(req.user._id);
 
     res.status(201).json({
       message: "Data imported successfully.",

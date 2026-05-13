@@ -249,8 +249,15 @@ export default function AuthForm({ onAuth, api, initialMode = "login", onModeCha
         {info && <p className="success-message">{info}</p>}
 
         <button type="submit" disabled={submitting}>
+          {submitting && <span className="button-spinner" aria-hidden="true" />}
           {submitting
-            ? "Please wait..."
+            ? resetStep === "auth" && !isRegistering
+              ? "Logging in..."
+              : resetStep === "auth" && isRegistering
+                ? "Creating account..."
+                : resetStep === "email"
+                  ? "Generating token..."
+                  : "Resetting password..."
             : resetStep === "email"
               ? "Generate reset token"
               : resetStep === "token"

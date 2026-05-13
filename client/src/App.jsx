@@ -19,7 +19,7 @@ import TransactionForm from "./components/TransactionForm.jsx";
 import TransactionList from "./components/TransactionList.jsx";
 import Toast from "./components/Toast.jsx";
 import WelcomeOverlay from "./components/WelcomeOverlay.jsx";
-import { api, clearAuth, convertFromBase, formatMoney, getStoredAuth, storeAuth } from "./utils/api.js";
+import { api, clearAuth, formatMoney, getStoredAuth, storeAuth } from "./utils/api.js";
 
 const dashboardDateFilters = [
   { key: "this_month", label: "This month" },
@@ -62,6 +62,17 @@ const emptyAnalytics = {
   expensesByCategory: [],
   monthlyTrend: [],
   exchangeRate: null
+};
+const emptyReportSummary = {
+  biggestExpense: null,
+  mostSpentCategory: null
+};
+const emptyDashboardLoading = {
+  summary: false,
+  charts: false,
+  recent: false,
+  budgets: false,
+  suggestions: false
 };
 
 const publicPages = ["Home", "Login / Register", "About"];
@@ -370,15 +381,30 @@ export default function App() {
   const [goals, setGoals] = useState([]);
   const [budgets, setBudgets] = useState([]);
   const [analytics, setAnalytics] = useState(emptyAnalytics);
+  const [reportAnalytics, setReportAnalytics] = useState(emptyAnalytics);
+  const [reportSummary, setReportSummary] = useState(emptyReportSummary);
   const [exchangeRate, setExchangeRate] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
+  const [dashboardLoading, setDashboardLoading] = useState(() =>
+    storedAuth?.token
+      ? {
+          summary: true,
+          charts: true,
+          recent: true,
+          budgets: true,
+          suggestions: true
+        }
+      : emptyDashboardLoading
+  );
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [editingGoal, setEditingGoal] = useState(null);
   const [loading, setLoading] = useState(() => Boolean(storedAuth?.token));
+  const [reportLoading, setReportLoading] = useState(false);
   const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("smart-expense-theme") === "dark");
   const [showWelcome, setShowWelcome] = useState(false);
   const [toasts, setToasts] = useState([]);
+  const [reportRefreshKey, setReportRefreshKey] = useState(0);
   const toastTimersRef = useRef(new Map());
   const pendingTransactionDeletesRef = useRef(new Map());
 
@@ -447,26 +473,70 @@ export default function App() {
 
   async function loadData() {
     if (!auth?.token) {
+      setDashboardLoading(emptyDashboardLoading);
       setLoading(false);
       return;
     }
 
     setError("");
-    try {
-      const [transactionData, goalData, analyticsData, suggestionData, budgetData] = await Promise.all([
-        api.getTransactions(),
-        api.getGoals(),
-        api.getAnalytics(),
-        api.getSuggestions(),
-        api.getBudgets()
-      ]);
-      setTransactions(transactionData);
-      setGoals(goalData);
-      setBudgets(budgetData);
+    setLoading(true);
+    setDashboardLoading({
+      summary: true,
+      charts: true,
+      recent: true,
+      budgets: true,
+      suggestions: true
+    });
+
+    async function fetchSummary() {
+      const analyticsData = await api.getAnalytics();
       setAnalytics(analyticsData);
+      setDashboardLoading((current) => ({ ...current, summary: false, budgets: false }));
+      return analyticsData;
+    }
+
+    async function fetchTransactions() {
+      const transactionData = await api.getTransactions();
+      setTransactions(transactionData);
+      setDashboardLoading((current) => ({ ...current, recent: false }));
+      return transactionData;
+    }
+
+    async function fetchCharts() {
+      const [goalData, rateData] = await Promise.all([
+        api.getGoals(),
+        api.getExchangeRate().catch(() => null)
+      ]);
+      setGoals(goalData);
+      setExchangeRate(rateData);
+      return { goalData, rateData };
+    }
+
+    async function fetchBudgets() {
+      const budgetData = await api.getBudgets();
+      setBudgets(budgetData);
+      return budgetData;
+    }
+
+    async function fetchSuggestions() {
+      const suggestionData = await api.getSuggestions();
       setSuggestions(suggestionData.suggestions || []);
+      setDashboardLoading((current) => ({ ...current, suggestions: false }));
+      return suggestionData;
+    }
+    try {
+      await Promise.all([
+        fetchSummary(),
+        fetchTransactions(),
+        Promise.all([fetchCharts(), fetchBudgets()]).then(() => {
+          setDashboardLoading((current) => ({ ...current, charts: false }));
+        }),
+        fetchSuggestions()
+      ]);
+      setReportRefreshKey((current) => current + 1);
     } catch (err) {
       setError(err.message);
+      setDashboardLoading(emptyDashboardLoading);
       showToast("❌ Something went wrong. Try again.", "error");
     } finally {
       setLoading(false);
@@ -478,27 +548,52 @@ export default function App() {
   }, [auth?.token]);
 
   useEffect(() => {
+    if (!auth?.token || page !== "Reports") {
+      setReportAnalytics(emptyAnalytics);
+      setReportSummary(emptyReportSummary);
+      setReportLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setReportLoading(true);
+
+    Promise.all([
+      api.getReportCharts(reportMonth + 1, reportYear),
+      api.getReportSummary(reportMonth + 1, reportYear, auth?.user?.defaultCurrency || "CAD")
+    ])
+      .then(([chartResponse, summaryResponse]) => {
+        if (cancelled) return;
+        setReportAnalytics((current) => ({
+          ...current,
+          expensesByCategory: chartResponse.analytics?.expensesByCategory || [],
+          monthlyTrend: chartResponse.analytics?.monthlyTrend || []
+        }));
+        setReportSummary({
+          biggestExpense: summaryResponse.biggestExpense || null,
+          mostSpentCategory: summaryResponse.mostSpentCategory || null
+        });
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setReportAnalytics(emptyAnalytics);
+        setReportSummary(emptyReportSummary);
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setReportLoading(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [auth?.token, auth?.user?.defaultCurrency, page, reportMonth, reportRefreshKey, reportYear]);
+
+  useEffect(() => {
     if (!auth?.token) {
       api.warmUp();
     }
-  }, [auth?.token]);
-
-  useEffect(() => {
-    async function loadExchangeRate() {
-      if (!auth?.token) {
-        setExchangeRate(null);
-        return;
-      }
-
-      try {
-        const rateData = await api.getExchangeRate();
-        setExchangeRate(rateData);
-      } catch (_error) {
-        setExchangeRate(null);
-      }
-    }
-
-    loadExchangeRate();
   }, [auth?.token]);
 
   useEffect(() => {
@@ -532,6 +627,14 @@ export default function App() {
   function handleAuth(nextAuth) {
     storeAuth(nextAuth);
     setAuth(nextAuth);
+    setLoading(true);
+    setDashboardLoading({
+      summary: true,
+      charts: true,
+      recent: true,
+      budgets: true,
+      suggestions: true
+    });
     setPage("Dashboard");
     setShowWelcome(true);
   }
@@ -560,6 +663,7 @@ export default function App() {
     setEditingTransaction(null);
     setEditingGoal(null);
     setError("");
+    setDashboardLoading(emptyDashboardLoading);
     setPage("Home");
     setLoading(false);
   }
@@ -785,32 +889,6 @@ export default function App() {
     () => [today.getFullYear(), today.getFullYear() - 1, today.getFullYear() - 2, today.getFullYear() - 3],
     [today]
   );
-  const reportRange = useMemo(
-    () => ({
-      start: new Date(reportYear, reportMonth, 1),
-      end: new Date(reportYear, reportMonth + 1, 0, 23, 59, 59, 999)
-    }),
-    [reportMonth, reportYear]
-  );
-  const reportSnapshot = useMemo(
-    () => computeAnalyticsSnapshot({
-      transactions,
-      goals,
-      budgets,
-      exchangeRate,
-      rangeKey: "all_time",
-      customRange: reportRange
-    }),
-    [transactions, goals, budgets, exchangeRate, reportRange]
-  );
-  const biggestExpense = useMemo(
-    () =>
-      reportSnapshot.filteredTransactions
-        .filter((item) => item.type === "expense")
-        .sort((a, b) => Number(b.amount || 0) - Number(a.amount || 0))[0] || null,
-    [reportSnapshot]
-  );
-
   function renderPrivatePageTitle(title, subtitle, options = {}) {
     return (
       <section className="page-title-block">
@@ -899,7 +977,7 @@ export default function App() {
     }
 
     if (page === "Future Planning") {
-      if (loading) {
+      if (loading || reportLoading) {
         return (
           <>
             {renderPrivatePageTitle("Future Planning", "Set savings targets and keep upcoming expenses in view.")}
@@ -984,40 +1062,49 @@ export default function App() {
           </section>
           <section className="report-callouts">
             <article className="panel report-callout-card">
-              <strong>💸 Biggest expense: {biggestExpense ? `${biggestExpense.title} — ${formatMoney(biggestExpense.amount, biggestExpense.currency)}` : "No expenses yet"}</strong>
+              <strong>
+                Biggest expense: {reportSummary.biggestExpense
+                  ? `${reportSummary.biggestExpense.title} — ${formatMoney(
+                    reportSummary.biggestExpense.amount,
+                    reportSummary.biggestExpense.currency
+                  )}`
+                  : "No expenses yet"}
+              </strong>
               <span>
-                {biggestExpense
-                  ? `${biggestExpense.category} · ${new Date(biggestExpense.date).toLocaleDateString()}`
+                {reportSummary.biggestExpense
+                  ? `${reportSummary.biggestExpense.category} · ${new Date(reportSummary.biggestExpense.date).toLocaleDateString()}`
                   : "Add expenses in the selected month to see the biggest purchase."}
               </span>
             </article>
             <article className="panel report-callout-card">
               <strong>
-                Most spent category: {reportSnapshot.analytics.expensesByCategory[0]
-                  ? `${reportSnapshot.analytics.expensesByCategory[0].category} — ${formatMoney(
-                    convertFromBase(
-                      reportSnapshot.analytics.expensesByCategory[0].amountCad,
-                      auth?.user?.defaultCurrency || "CAD",
-                      exchangeRate
-                    ),
-                    auth?.user?.defaultCurrency || "CAD"
+                Most spent category: {reportSummary.mostSpentCategory
+                  ? `${reportSummary.mostSpentCategory.category} — ${formatMoney(
+                    reportSummary.mostSpentCategory.amount,
+                    reportSummary.mostSpentCategory.currency
                   )}`
                   : "No category data"}
               </strong>
               <span>
-                {reportSnapshot.analytics.expensesByCategory[0]
+                {reportSummary.mostSpentCategory
                   ? `Based on ${reportMonthLabels[reportMonth]} ${reportYear}`
                   : "Add expenses in the selected month to compare categories."}
               </span>
             </article>
           </section>
-          <ImportDataPanel api={api} onImported={loadData} onToast={showToast} />
           <DashboardCharts
-            analytics={reportSnapshot.analytics}
+            analytics={reportAnalytics}
             displayCurrency={auth?.user?.defaultCurrency || "CAD"}
             exchangeRate={exchangeRate}
-            loading={loading}
+            loading={reportLoading}
           />
+          <section className="panel report-import-divider">
+            <div className="section-heading">
+              <p>Import data</p>
+              <h2>Upload transactions, goals, or budgets</h2>
+            </div>
+          </section>
+          <ImportDataPanel api={api} onImported={loadData} onToast={showToast} />
         </>
       );
     }
@@ -1088,6 +1175,13 @@ export default function App() {
                 loading
                 variant="dashboard"
               />
+            </section>
+            <section className="dashboard-group dashboard-recent">
+              <div className="dashboard-group-heading">
+                <p className="eyebrow">Recent transactions</p>
+                <h2>Latest activity</h2>
+              </div>
+              <RecentExpenses expenses={[]} loading onViewAll={() => setPage("Expense History")} />
             </section>
           </>
         ) : transactions.length === 0 ? (
@@ -1188,20 +1282,6 @@ export default function App() {
           </span>
         </strong>
         <div className="nav-actions">
-          {auth?.token ? (
-            <div className="nav-profile-area">
-              <button
-                className={page === "Profile" ? "nav-active nav-profile-button" : "ghost nav-profile-button"}
-                type="button"
-                onClick={() => setPage("Profile")}
-              >
-                Profile
-              </button>
-              <button className="ghost nav-logout-button" type="button" onClick={handleLogout}>
-                Logout
-              </button>
-            </div>
-          ) : null}
           <button
             aria-expanded={mobileMenuOpen}
             aria-label="Open navigation menu"
@@ -1269,6 +1349,14 @@ export default function App() {
               </>
             )}
           </div>
+          {auth?.token ? (
+            <div className="nav-profile-area">
+              <span aria-hidden="true" className="nav-divider" />
+              <button className="ghost nav-logout-button" type="button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          ) : null}
         </div>
       </nav>
 

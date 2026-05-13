@@ -234,7 +234,7 @@ export default function ProfileSettings({
                 type="button"
                 onClick={onToggleDarkMode}
               >
-                {darkMode ? "\u2600" : "\u263E"}
+                {darkMode ? "🌙" : "☀️"}
               </button>
             </div>
 
@@ -257,10 +257,11 @@ export default function ProfileSettings({
               </label>
               <div className="profile-readonly-block">
                 <span className="profile-readonly-label">Email</span>
-                <strong className="profile-readonly-value">{profile.email}</strong>
+                <span className="profile-readonly-value">{profile.email}</span>
                 <button className="link-button profile-link" type="button" onClick={handleChangeEmailClick}>
                   Change email
                 </button>
+                <div className="profile-meta-divider" />
                 <small className="muted profile-meta">Member since {memberSinceLabel || "unknown"}</small>
                 <small className="muted profile-meta">Total transactions recorded: {transactions.length}</small>
               </div>
@@ -281,9 +282,13 @@ export default function ProfileSettings({
                   name="monthlySavingsGoal"
                   type="number"
                   min="0"
-                  value={profile.monthlySavingsGoal}
+                  placeholder="e.g. 500"
+                  value={Number(profile.monthlySavingsGoal || 0) > 0 ? profile.monthlySavingsGoal : ""}
                   onChange={updateProfileField}
                 />
+                <small className="muted profile-field-help">
+                  We will track your monthly saving progress against this goal
+                </small>
               </label>
               <div className="actions full">
                 <button type="submit">Save profile</button>
@@ -389,18 +394,20 @@ export default function ProfileSettings({
               <p>Savings progress</p>
               <h2>Monthly goal</h2>
             </div>
-            <div className="progress-track large">
-              <span style={{ width: `${savingsProgress}%` }} />
-            </div>
-            <p className="muted">
-              Charts and converted reports use {getCurrencyLabel(profile.defaultCurrency)}.
-            </p>
             {savingsGoalValue > 0 ? (
-              <p className="muted">
-                {savingsProgress}% of {formatMoney(savingsGoalValue, "CAD")} monthly savings goal.
-              </p>
+              <>
+                <div className="progress-track large">
+                  <span style={{ width: `${savingsProgress}%` }} />
+                </div>
+                <p className="muted">
+                  Charts and converted reports use {getCurrencyLabel(profile.defaultCurrency)}.
+                </p>
+                <p className="muted">
+                  {savingsProgress}% of {formatMoney(savingsGoalValue, "CAD")} monthly savings goal.
+                </p>
+              </>
             ) : (
-              <p className="savings-nudge">Set a goal to track your monthly progress.</p>
+              <p className="savings-nudge">💡 Set a monthly savings goal above to start tracking your progress</p>
             )}
           </section>
 

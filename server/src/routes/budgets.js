@@ -1,6 +1,7 @@
 import express from "express";
 import { protect } from "../middleware/auth.js";
 import { Budget } from "../models/Budget.js";
+import { clearReportCacheForUser } from "../utils/reportCache.js";
 
 const router = express.Router();
 
@@ -22,6 +23,7 @@ router.post("/", async (req, res, next) => {
       { ...req.body, user: req.user._id },
       { new: true, runValidators: true, upsert: true }
     );
+    clearReportCacheForUser(req.user._id);
     res.status(201).json(budget);
   } catch (error) {
     next(error);
@@ -36,6 +38,7 @@ router.delete("/:id", async (req, res, next) => {
       return res.status(404).json({ message: "Budget not found" });
     }
 
+    clearReportCacheForUser(req.user._id);
     res.status(204).send();
   } catch (error) {
     next(error);

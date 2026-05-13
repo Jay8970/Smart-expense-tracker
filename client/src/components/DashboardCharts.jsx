@@ -32,7 +32,9 @@ export default function DashboardCharts({
   const showFullReport = variant === "full";
   const hasCategoryData = (analytics.expensesByCategory || []).length > 0;
   const hasMonthlyData = (analytics.monthlyTrend || []).length > 0;
+  const hasTrendData = (analytics.monthlyTrend || []).length >= 3;
   const displayCurrencyLabel = getCurrencyLabel(displayCurrency);
+  const titleCurrency = `(${displayCurrency})`;
   const convertedCategoryData = (analytics.expensesByCategory || []).map((item) => ({
     ...item,
     convertedAmount: convertFromBase(item.amountCad, displayCurrency, exchangeRate)
@@ -65,7 +67,7 @@ export default function DashboardCharts({
       <article className="panel chart-panel">
         <div className="section-heading">
           <p>Expense split in {displayCurrencyLabel}</p>
-          <h2>Spending by category</h2>
+          <h2>Spending by category {titleCurrency}</h2>
         </div>
         {hasCategoryData ? (
           <ResponsiveContainer width="100%" height={categoryChartHeight}>
@@ -84,6 +86,8 @@ export default function DashboardCharts({
               />
               <Tooltip formatter={(value, _name, details) => [formatMoney(value, displayCurrency), details?.payload?.category || "Amount"]} />
               <Bar
+                animationBegin={0}
+                animationDuration={650}
                 dataKey="convertedAmount"
                 name="Category spending"
                 radius={[0, 8, 8, 0]}
@@ -95,43 +99,76 @@ export default function DashboardCharts({
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <div className="empty-state">No expenses yet. Add your first expense to see category charts.</div>
+          <div className="empty-state chart-empty-state">No data for category spending in this view yet.</div>
         )}
       </article>
 
       <article className="panel chart-panel">
         <div className="section-heading">
           <p>Monthly view in {displayCurrencyLabel}</p>
-          <h2>Monthly expenses</h2>
+          <h2>Monthly income vs expenses {titleCurrency}</h2>
         </div>
         {hasMonthlyData ? (
           <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={convertedMonthlyTrend}>
+            <BarChart data={convertedMonthlyTrend} barGap={10}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+              <YAxis
+                tickFormatter={(value) => formatAxisValue(value, displayCurrency)}
+                width={92}
+                label={{
+                  value: `Amount (${displayCurrency})`,
+                  angle: -90,
+                  position: "insideLeft",
+                  style: { fill: "#94a3b8", fontSize: 12, fontWeight: 700 }
+                }}
+              />
               <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
-              <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
-              <Bar dataKey="expenseDisplay" name="Monthly expenses" fill="#dc2626" radius={[6, 6, 0, 0]} />
+              <Legend verticalAlign="bottom" wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700, paddingTop: "12px" }} />
+              <Bar
+                animationBegin={0}
+                animationDuration={650}
+                dataKey="incomeDisplay"
+                name="Income"
+                fill="#0f766e"
+                radius={[6, 6, 0, 0]}
+              />
+              <Bar
+                animationBegin={80}
+                animationDuration={650}
+                dataKey="expenseDisplay"
+                name="Expenses"
+                fill="#dc2626"
+                radius={[6, 6, 0, 0]}
+              />
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <div className="empty-state">Monthly chart appears after adding transactions.</div>
+          <div className="empty-state chart-empty-state">No monthly income or expense data is available for this period.</div>
         )}
       </article>
 
       {showFullReport && (
         <article className="panel chart-panel">
-          <div className="section-heading">
-            <p>Trend in {displayCurrencyLabel}</p>
-            <h2>Spending over time</h2>
-          </div>
-          {hasMonthlyData ? (
+        <div className="section-heading">
+          <p>Trend in {displayCurrencyLabel}</p>
+          <h2>Spending over time {titleCurrency}</h2>
+        </div>
+          {hasTrendData ? (
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={convertedMonthlyTrend}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+                <YAxis
+                  tickFormatter={(value) => formatAxisValue(value, displayCurrency)}
+                  width={92}
+                  label={{
+                    value: `Amount (${displayCurrency})`,
+                    angle: -90,
+                    position: "insideLeft",
+                    style: { fill: "#94a3b8", fontSize: 12, fontWeight: 700 }
+                  }}
+                />
                 <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
                 <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
                 <Line
@@ -140,12 +177,12 @@ export default function DashboardCharts({
                   name="Spending trend"
                   stroke="#dc2626"
                   strokeWidth={3}
-                  dot={{ r: 4 }}
+                  dot={{ r: 5, strokeWidth: 2, fill: "#dc2626", stroke: "#f8fafc" }}
                 />
               </LineChart>
             </ResponsiveContainer>
           ) : (
-            <div className="empty-state">Add expenses across months to see trends.</div>
+            <div className="empty-state chart-empty-state">Add transactions across 3 or more months to see your spending trend</div>
           )}
         </article>
       )}
@@ -154,19 +191,37 @@ export default function DashboardCharts({
         <article className="panel chart-panel">
           <div className="section-heading">
             <p>Comparison in {displayCurrencyLabel}</p>
-            <h2>Income vs expense</h2>
+            <h2>Income vs expense {titleCurrency}</h2>
           </div>
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={convertedMonthlyTrend}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
-              <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
-              <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
-              <Bar dataKey="incomeDisplay" name="Income" fill="#0f766e" radius={[6, 6, 0, 0]} />
-              <Bar dataKey="expenseDisplay" name="Expenses" fill="#dc2626" radius={[6, 6, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          {hasMonthlyData ? (
+            <ResponsiveContainer width="100%" height={280}>
+              <BarChart data={convertedMonthlyTrend}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis tickFormatter={(value) => formatAxisValue(value, displayCurrency)} width={92} />
+                <Tooltip formatter={(value, name) => [formatMoney(value, displayCurrency), name]} />
+                <Legend wrapperStyle={{ fontSize: "0.95rem", fontWeight: 700 }} />
+                <Bar
+                  animationBegin={0}
+                  animationDuration={650}
+                  dataKey="incomeDisplay"
+                  name="Income"
+                  fill="#0f766e"
+                  radius={[6, 6, 0, 0]}
+                />
+                <Bar
+                  animationBegin={80}
+                  animationDuration={650}
+                  dataKey="expenseDisplay"
+                  name="Expenses"
+                  fill="#dc2626"
+                  radius={[6, 6, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="empty-state chart-empty-state">No income-versus-expense comparison is available for this period.</div>
+          )}
         </article>
       )}
     </section>
